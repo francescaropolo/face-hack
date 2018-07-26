@@ -1,7 +1,7 @@
 # Facehack
 
 ## Description
-A nice platform for Ironhack
+
  
 ## User Stories
  - **404** - As a user I want to see a nice 404 page when I go to a page that doesn’t exist so that I know it was my fault 
@@ -57,6 +57,7 @@ POST /auth/login - POST Body: email, password
 POST auth/logout - POST Body: nothing
 
 GET /jobs
+GET /jobs/create
 POST /jobs/create - POST Body: title, company, type, salary,journey-type, description, vacancies, location
 GET /jobs/:id
 POST /jobs/:id/application - POST Body: nothing (the user is already stored in the session)
@@ -92,7 +93,7 @@ const userSchema = new Schema({
     email: {type: String, unique: true}
     password: String,
     dateOfBirth: Date,
-    phone: {type: String, unique: true},
+    phone: String,
     bio: String,
     socialNetworks: {
         facebook: String,
