@@ -28,8 +28,10 @@ User profile:
 - list of jobs offer created by the user
 - list jobs offer the user have applied
 
-Job sorting:
+Job:
 - Edit a job offer
+
+Job sorting:
 - Sort by type: Webdev/UX-UI
 - Sort by salary
 - Sort by full-time or part-time
