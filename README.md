@@ -1,7 +1,7 @@
 # Facehack
 
 ## Description
-
+A jobs platform from Ironhackers for Ironhackers.
  
 ## User Stories
  - **404** - As a user I want to see a nice 404 page when I go to a page that doesn’t exist so that I know it was my fault 
