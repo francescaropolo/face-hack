@@ -23,12 +23,13 @@ A nice platform for Ironhack
 List of other features outside of the MVPs scope
 
 User profile:
-- user finder
 - upload my profile picture
+- user finder
 - list of jobs offer created by the user
 - list jobs offer the user have applied
 
 Job sorting:
+- Edit a job offer
 - Sort by type: Webdev/UX-UI
 - Sort by salary
 - Sort by full-time or part-time
@@ -43,7 +44,7 @@ Chat:
 - user is able to chat on the channel
 - list of connected users on sidebar
 
-## ROUTES:
+## Routes
 ```
 GET / 
 
@@ -66,7 +67,7 @@ GET /profile/:id
 
 ```
 
-## MODELS
+## Models
 
 ``` javascript
 const jobSchema = new Schema({
