@@ -56,7 +56,7 @@ router.post('/:id', (req,res,next) => {
   const { title, company, type, description, salary, journeyType, vacancies } = req.body;
   Job.findByIdAndUpdate(id, { title, company, type, description, salary, journeyType, vacancies })
     .then(data => {
-      res.redirect(`/jobs/${id}`), data;
+      res.redirect(`/jobs/${id}`, data);
     })
     .catch(error => {
       next(error);
@@ -73,6 +73,5 @@ router.post('/:id/delete', (req, res, next) => {
       next(error);
     })
 })
-
 
 module.exports = router;
