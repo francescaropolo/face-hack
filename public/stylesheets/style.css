@@ -17,7 +17,16 @@ body {
 }
 
 .container {
-  margin: 0 10px;
+  display: flex;
+  flex-wrap: nowrap;
+  margin: 0 50px;
+}
+
+.job-item {
+  background-color: #E0E0E0;
+  margin: 2px;
+  width: 100%;
+  text-align: center;
 }
 
 /*# sourceMappingURL=style.css.map */

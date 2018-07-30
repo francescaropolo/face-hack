@@ -1,5 +1,12 @@
 .container {
-  margin: 0 10px;
+  display: flex;
+  flex-wrap: nowrap;
+  margin: 0 50px;
 }
 
-
+.job-item {
+  background-color:$jobbox;  
+  margin: 2px;
+  width: 100%;  
+  text-align: center;
+}
