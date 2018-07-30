@@ -7,10 +7,9 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
+    {{>navbar}}
     {{{body}}}
-    <a href="/auth/signup">Sign up</a>
-    <a href="/auth/login">Login</a>
-    <form action="/auth/logout" method="POST"><input type="submit" value="Logout"></form>
+    
 
     <script src="/uikit/js/uikit.min.js"></script>
     <script src="/uikit/js/uikit-icons.min.js"></script>
