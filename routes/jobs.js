@@ -6,7 +6,7 @@ const User = require('../models/user');
 /* GET jobs listing. */
 router.get('/', function(req, res, next) {
   Job.find()
-    .populate('User') // Populate before render
+    .populate('owner') // Populate before render
     .then((jobs) => {
       res.render('jobs/list', { jobs });
     })
@@ -20,12 +20,11 @@ router.get('/create', (req,res,next) => {
 });
 
 router.post('/create', (req,res,next) => {
-  const { title, company, type, description, salary, journeyType, vacancies } = req.body;
-  const { owner } = req.session.currentUser; // Review to fix
+  const { title, company, type, description, salary, journeyType, vacancies } = req.body;    
+  const owner = req.session.currentUser;  
   Job.create({ owner, title, company, type, description, salary, journeyType, vacancies })
     .then(() => {
       res.redirect('/jobs');
-      console.log(owner); // Review
     })
     .catch(error => {
       next(error);
