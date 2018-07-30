@@ -14,6 +14,7 @@ const flash = require('connect-flash');
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const authRouter = require('./routes/auth');
+const jobsRouter = require('./routes/jobs');
 
 mongoose.connect('mongodb://localhost/facehack');
 
@@ -54,6 +55,7 @@ app.use((req, res, next) => {
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/auth', authRouter);
+app.use('/jobs', jobsRouter);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
