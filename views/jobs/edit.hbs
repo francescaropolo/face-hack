@@ -5,28 +5,36 @@
   <input type="text" name="title" value="{{title}}">
 
   <label for="">Company:</label>
-  <input type="text" name="company">
+  <input type="text" name="company" value="{{company}}">
 
   <label for="">Type:</label>
   <select name="type">
-    <option value="webdev">Web development</option>
-    <option value="ux-ui">UX/UI design</option>
+      {{#ifEquals type "webdev"}}  
+        <option value="webdev" selected>Web development</option>
+      {{/ifEquals}}
+      {{#ifEquals type "ux-ui"}}
+        <option value="ux-ui" selected>UX/UI design</option>
+      {{/ifEquals}}
   </select>
 
   <label for="">Description:</label>
-  <input type="text" name="description">
+  <input type="text" name="description" value="{{description}}">
 
   <label for="">Salary:</label>
-  <input type="number" name="salary">
+  <input type="number" name="salary" value="{{salary}}">
 
   <label for="">Journey type:</label>
   <select name="journey">
-    <option value="part-time">Part-time</option>
-    <option value="full-time">Full-time</option>
+    {{#ifEquals journey "part-time"}}
+      <option value="part-time" selected>Part-time</option>
+    {{/ifEquals}}
+    {{#ifEquals journey "full-time"}}
+      <option value="full-time" selected>Full-time</option>
+    {{/ifEquals}}
   </select>
 
   <label for="">Vacancies:</label>
-  <input type="number" name="vacancies">
+  <input type="number" name="vacancies" value="{{vacancies}}">
 
   <button type="submit">Update</button>
 </form>
