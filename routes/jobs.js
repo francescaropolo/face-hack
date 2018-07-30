@@ -5,13 +5,28 @@ const Job = require('../models/job');
 /* GET jobs listing. */
 router.get('/', function(req, res, next) {
   Job.find()
-    .then((job) => {
+    .then((jobs) => {
       res.render('jobs/list', { jobs });
     })
     .catch(error => {
       next(error);
       console.log('error', error);
     })
+});
+
+router.get('/add', (req,res,next) => {
+  res.render('jobs/add');
+});
+
+router.post('/add', (req,res,next) => {
+  const { title, company, type, description, salary, journeyType, vacancies } = req.body;
+  Job.create({ title, company, type, description, salary, journeyType, vacancies })
+    .then(() => {
+      res.redirect('/jobs');
+    })
+    .catch(error => {
+      next(error);
+    });
 });
 
 module.exports = router;

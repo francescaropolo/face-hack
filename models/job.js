@@ -9,7 +9,7 @@ const jobSchema = new Schema({
   salary: Number,
   journeyType: String,
   vacancies: Number,
-  location: {type: {type: String}, coordinates: [Number]},
+  // location: {type: {type: String}, coordinates: [Number]},
   // applicants: ObjectId
 }, {
   timestamps: {

@@ -1,0 +1,32 @@
+<h2>Add job</h2>
+
+<form action="/jobs/add" method="post">
+  <label for="">Title:</label>
+  <input type="text" name="title">
+
+  <label for="">Company:</label>
+  <input type="text" name="company">
+
+  <label for="">Type:</label>
+  <select name="type">
+    <option value="webdev">Web development</option>
+    <option value="ux-ui">UX/UI design</option>
+  </select>
+
+  <label for="">Description:</label>
+  <input type="text" name="description">
+
+  <label for="">Salary:</label>
+  <input type="number" name="salary">
+
+  <label for="">Journey type:</label>
+  <select name="journey">
+    <option value="part-time">Part-time</option>
+    <option value="full-time">Full-time</option>
+  </select>
+
+  <label for="">Vacancies:</label>
+  <input type="number" name="vacancies">
+
+  <button type="submit">ADD</button>
+</form>
