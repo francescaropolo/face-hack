@@ -1,8 +1,51 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+html {
+  box-sizing: border-box;
 }
 
-a {
-  color: #00B7FF;
+*, *:before, *:after {
+  box-sizing: inherit;
 }
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Maven", sans-serif;
+  font-size: 16pt;
+  color: #fff;
+  text-align: center;
+}
+
+h1 {
+  font-weight: 700;
+  font-size: 2.6em;
+}
+
+h2 {
+  font-size: 1em;
+}
+
+h3 {
+  font-size: 1.62em;
+}
+
+h4 {
+  font-size: 1.3em;
+}
+
+p {
+  font-size: 1em;
+  color: #1A7E80;
+}
+
+body {
+  background-color: #1A7E80;
+}
+
+.container {
+  margin: 0 50px;
+}
+
+/*# sourceMappingURL=style.css.map */
