@@ -8,6 +8,8 @@
     <div class="job-item job-list-titles">Salary</div>
     <div class="job-item job-list-titles">Journey type</div>
     <div class="job-item job-list-titles">Vacancies</div>
+    <div class="job-item job-list-titles">Created by</div>
+    <div class="job-item job-list-titles">Options</div>
   </li>
 {{#each jobs}}
   <li class="container">
@@ -18,6 +20,7 @@
     <div class="job-item">{{salary}}</div>
     <div class="job-item">{{journeyType}}</div>
     <div class="job-item">{{vacancies}}</div>
+    <div class="job-item">{{owner}}</div>
     <form action="/jobs/{{id}}/edit" method="GET">
       <input type="submit" value="EDIT">
     </form>

@@ -31,6 +31,7 @@ router.post('/create', (req,res,next) => {
 router.get('/:id', (req,res,next) => {
   const { id } = req.params;
   Job.findById(id)
+    .populate('User') // Populate before render
     .then(job => {
       res.render('jobs/job', job);
     })

@@ -3,6 +3,7 @@ const Schema = mongoose.Schema;
 
 const jobSchema = new Schema({
   // Owner: type: ObjectId, ref: 'User'; (populate)
+  owner: { type: Schema.Types.ObjectId, ref: 'User' },
   title: String,
   company: String,
   type: String,
