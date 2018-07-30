@@ -7,7 +7,19 @@
         <ul class="uk-navbar-nav">
              {{#if currentUser}}
                 <li class="uk-navbar-item"><div>Logged: {{currentUser.email}}</div></li>
-                <li class="uk-navbar-item"> <form action="/auth/logout" method="POST"> <button type="submit" class="uk-button uk-button-default">Logout</button> </form> </li>
+                <li class="uk-navbar-item">
+                    <a href="#">Options</a>
+                    <div class="uk-navbar-dropdown">
+                        <ul class="uk-nav uk-navbar-dropdown-nav">
+                            <li class="uk-nav-header">Header</li>
+                            <li><a href="/users">My profile</a></li>
+                            <li><a href="#">View jobs</a></li>
+                            <li class="uk-nav-divider"></li>
+                            <li><form action="/auth/logout" method="POST"> <button type="submit" class="uk-button uk-button-default">Logout</button> </form></li>
+                        </ul>
+                    </div>
+                </li>
+                {{!-- <li class="uk-navbar-item"> <form action="/auth/logout" method="POST"> <button type="submit" class="uk-button uk-button-default">Logout</button> </form> </li> --}}
             {{else}}
                 <li class="uk-navbar-item"> <a href="/auth/signup">Sign up</a> </li>
                 <li class="uk-navbar-item"> <a href="/auth/login">Login</a> </li>
