@@ -9,7 +9,7 @@ const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 const flash = require('connect-flash');
 
-// const authMiddlewares = require('./middlewares/auth');
+const authMiddlewares = require('./middlewares/auth');
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
@@ -53,7 +53,7 @@ app.use((req, res, next) => {
 });
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/users', authMiddlewares.requireUser, usersRouter);
 app.use('/auth', authRouter);
 app.use('/jobs', jobsRouter);
 
