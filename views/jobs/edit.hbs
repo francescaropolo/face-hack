@@ -1,0 +1,40 @@
+<h2>Edit {{job}}</h2>
+
+<form action="/jobs/{{id}}" method="post">
+  <label for="">Title:</label>
+  <input type="text" name="title" value="{{title}}">
+
+  <label for="">Company:</label>
+  <input type="text" name="company" value="{{company}}">
+
+  <label for="">Type:</label>
+  <select name="type">
+      {{#ifEquals type "webdev"}}  
+        <option value="webdev" selected>Web development</option>
+      {{/ifEquals}}
+      {{#ifEquals type "ux-ui"}}
+        <option value="ux-ui" selected>UX/UI design</option>
+      {{/ifEquals}}
+  </select>
+
+  <label for="">Description:</label>
+  <input type="text" name="description" value="{{description}}">
+
+  <label for="">Salary:</label>
+  <input type="number" name="salary" value="{{salary}}">
+
+  <label for="">Journey type:</label>
+  <select name="journey">
+    {{#ifEquals journey "part-time"}}
+      <option value="part-time" selected>Part-time</option>
+    {{/ifEquals}}
+    {{#ifEquals journey "full-time"}}
+      <option value="full-time" selected>Full-time</option>
+    {{/ifEquals}}
+  </select>
+
+  <label for="">Vacancies:</label>
+  <input type="number" name="vacancies" value="{{vacancies}}">
+
+  <button type="submit">Update</button>
+</form>

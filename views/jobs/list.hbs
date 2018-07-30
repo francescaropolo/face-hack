@@ -1,13 +1,23 @@
 <h2>Jobs</h2>
 <ul>
+  <li class="container">
+    <div class="job-item job-list-titles">Offer title</div>
+    <div class="job-item job-list-titles">Company name</div>
+    <div class="job-item job-list-titles">Type</div>
+    <div class="job-item job-list-titles">Description</div>
+    <div class="job-item job-list-titles">Salary</div>
+    <div class="job-item job-list-titles">Journey type</div>
+    <div class="job-item job-list-titles">Vacancies</div>
+  </li>
 {{#each jobs}}
-  <li><a href="/jobs/{{this.id}}">{{title}}</a>
-    <p>{{company}}</p>
-    <p>{{type}}</p>
-    <p>{{description}}</p>
-    <p>{{salary}}</p>
-    <p>{{journeyType}}</p>
-    <p>{{vacancies}}</p>
+  <li class="container">
+    <div class="job-item"><a href="/jobs/{{this.id}}">{{title}}</a></div>
+    <div class="job-item">{{company}}</div>
+    <div class="job-item">{{type}}</div>
+    <div class="job-item">{{description}}</div>
+    <div class="job-item">{{salary}}</div>
+    <div class="job-item">{{journeyType}}</div>
+    <div class="job-item">{{vacancies}}</div>
     <form action="/jobs/{{this.id}}/delete" method="POST">
       <input type="submit" value="DELETE">
     </form>

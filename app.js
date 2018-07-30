@@ -11,12 +11,12 @@ const flash = require('connect-flash');
 
 const authMiddlewares = require('./middlewares/auth');
 
+mongoose.connect('mongodb://localhost/facehack');
+
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const authRouter = require('./routes/auth');
 const jobsRouter = require('./routes/jobs');
-
-mongoose.connect('mongodb://localhost/facehack');
 
 const app = express();
 
@@ -25,6 +25,11 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
 hbs.registerPartials(__dirname + '/views/partials');
+
+// Helper to compare strings on views using {{#ifEquals arg1 arg2}} {{/ifEquals}}
+hbs.registerHelper('ifEquals', (arg1, arg2, options) => {
+    return (arg1 === arg2) ? options.fn(this) : options.inverse(this);
+});
 
 app.use(session({
     store: new MongoStore({
