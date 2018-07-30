@@ -1,13 +1,44 @@
-<nav class="uk-navbar-container" uk-navbar>
+<nav class="uk-navbar uk-navbar-container uk-hidden@s" id="menu" uk-navbar>
     <div class="uk-navbar-left">
         <a class="uk-navbar-item uk-logo" href="#">Facehack</a>        
     </div>
+    <div class="uk-navbar-right">
+        <a class="uk-navbar-toggle" href="#" uk-toggle="target: #offcanvas-nav">
+            <span uk-navbar-toggle-icon></span>
+        </a>
+    </div>
+</nav>
+<div id="offcanvas-nav" uk-offcanvas="overlay: true; flip: true">
+    <div class="uk-offcanvas-bar">
+        <ul class="uk-nav uk-nav-default">
+            <button class="uk-offcanvas-close" type="button" uk-close></button>
+            {{#if currentUser}}
+                <li class="uk-navbar-item"><div>Logged: {{currentUser.email}}</div></li>
+                <li class="uk-navbar-item">
+                    <ul class="uk-nav uk-navbar-dropdown-nav">
+                        <li><a href="/users">My profile</a></li>
+                        <li><a href="#">View jobs</a></li>
+                        <li class="uk-nav-divider"></li>
+                        <li><form action="/auth/logout" method="POST"> <button type="submit" class="uk-button uk-button-default">Logout</button> </form></li>
+                    </ul>
+                </li>
+            {{else}}
+                <li class="uk-navbar-item"> <a href="/auth/signup">Sign up</a> </li>
+                <li class="uk-navbar-item"> <a href="/auth/login">Login</a> </li>
+            {{/if}}  
+        </ul>
+    </div>
+</div>
 
+<nav class="uk-navbar uk-navbar-container uk-visible@m" id="menu" uk-navbar>
+    <div class="uk-navbar-left">
+        <a class="uk-navbar-item uk-logo" href="#">Facehack</a>        
+    </div>
     <div class="uk-navbar-right">
         <ul class="uk-navbar-nav">
              {{#if currentUser}}
-                <li class="uk-navbar-item"><div>Logged: {{currentUser.email}}</div></li>
-                <li class="uk-navbar-item">
+                <li class="uk-navbar-item uk-hidden-small"><div>Logged: {{currentUser.email}}</div></li>
+                <li class="uk-navbar-item uk-hidden-small">
                     <a href="#">Options</a>
                     <div class="uk-navbar-dropdown">
                         <ul class="uk-nav uk-navbar-dropdown-nav">
@@ -21,10 +52,9 @@
                 </li>
                 {{!-- <li class="uk-navbar-item"> <form action="/auth/logout" method="POST"> <button type="submit" class="uk-button uk-button-default">Logout</button> </form> </li> --}}
             {{else}}
-                <li class="uk-navbar-item"> <a href="/auth/signup">Sign up</a> </li>
-                <li class="uk-navbar-item"> <a href="/auth/login">Login</a> </li>
-            {{/if}}
-          
+                <li class="uk-navbar-item uk-hidden-small"> <a href="/auth/signup">Sign up</a> </li>
+                <li class="uk-navbar-item uk-hidden-small"> <a href="/auth/login">Login</a> </li>
+            {{/if}}  
         </ul>
     </div>    
 </nav>

@@ -10,9 +10,11 @@
         <input id="myPassword" type="password" name="password" required>
     </div>
     {{#if messages.length}}
-    <ul class="validation">
-        {{#each messages}}<li>{{this}}</li>{{/each}}
-    </ul>
+    <div class="uk-alert-danger" uk-alert>
+        <a class="uk-alert-close" uk-close></a>
+        <h3>Error</h3>
+        <p>{{#each messages}}{{this}}{{/each}}</p>
+    </div>
     {{/if}}
     <div class="field">
         <button type="submit">Signup</button>
