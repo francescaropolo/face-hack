@@ -1,10 +1,10 @@
 <h2>Sign up</h2>
 <form method="POST" action="/auth/signup" class="uk-form-stacked">
     <div class="uk-margin">
-        <input class="uk-input uk-form-blank uk-form-width-medium" type="email" placeholder="Email" required>
-        <input class="uk-input uk-form-blank uk-form-width-medium" type="password" placeholder="Password" required>
+        <input type="email" placeholder="Email" name="email" class="uk-input uk-form-blank uk-form-width-medium" required>
+        <input type="password" placeholder="Password" name="password" class="uk-input uk-form-blank uk-form-width-medium" required>
     </div>
-    
+
     {{#if messages.length}}
     <div class="uk-alert-danger" uk-alert>
         <a class="uk-alert-close" uk-close></a>

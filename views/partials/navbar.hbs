@@ -24,8 +24,11 @@
                     </ul>
                 </li>
             {{else}}
-                <li class="uk-navbar-item"> <a href="/auth/signup">Sign up</a> </li>
-                <li class="uk-navbar-item"> <a href="/auth/login">Login</a> </li>
+                <ul class="uk-nav uk-navbar-dropdown-nav">
+                    <li class="uk-nav-header">Menu</li>
+                    <li> <a href="/auth/signup">Sign up</a> </li>
+                    <li> <a href="/auth/login">Login</a> </li>
+                </ul>
             {{/if}}  
         </ul>
     </div>

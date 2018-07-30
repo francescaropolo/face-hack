@@ -1,32 +1,32 @@
 <h2>Create a new job</h2>
 
-<form action="/jobs/create" method="post">
-  <label for="">Title:</label>
-  <input type="text" name="title">
-
-  <label for="">Company:</label>
-  <input type="text" name="company">
-
-  <label for="">Type:</label>
-  <select name="type">
-    <option value="webdev">Web development</option>
-    <option value="ux-ui">UX/UI design</option>
-  </select>
-
-  <label for="">Description:</label>
-  <input type="text" name="description">
-
-  <label for="">Salary:</label>
-  <input type="number" name="salary">
-
-  <label for="">Journey type:</label>
-  <select name="journey">
-    <option value="part-time">Part-time</option>
-    <option value="full-time">Full-time</option>
-  </select>
-
-  <label for="">Vacancies:</label>
-  <input type="number" name="vacancies">
-
-  <button type="submit">Create</button>
+<form action="/jobs/create" method="post" class="uk-form-stacked">
+    <div class="uk-margin">
+        <input type="text" placeholder="Title" name="title" class="uk-input uk-form-blank uk-form-width-medium" required>
+        <input type="text" placeholder="Company" name="company" class="uk-input uk-form-blank uk-form-width-medium" required>
+        <div class="uk-margin">
+            <div uk-form-custom="target: true">
+                <select name="type">
+                    <option value="webdev">Web development</option>
+                    <option value="ux-ui">UX/UI design</option>
+                </select>
+                <span></span>
+            </div>
+        </div>
+        <input type="text" placeholder="Description" name="description" class="uk-input uk-form-blank uk-form-width-medium" required>
+        <input type="number" placeholder="Salary" name="salary" class="uk-input uk-form-blank uk-form-width-medium" required>
+        <div class="uk-margin">
+            <div uk-form-custom="target: true">
+                <select name="journey">
+                    <option value="part-time">Part-time</option>
+                    <option value="full-time">Full-time</option>
+                </select>
+                <span></span>
+            </div>
+        </div>
+        <input type="number" placeholder="Vacancies" name="vacancies" class="uk-input uk-form-blank uk-form-width-medium" required>
+    </div>
+    <div class="field">
+        <button class="uk-button uk-button-primary" type="submit">Create</button>
+    </div>
 </form>
