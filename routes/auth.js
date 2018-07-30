@@ -47,7 +47,7 @@ router.post('/login', (req, res, next) => {
     const {email, password} = req.body;
     if (!email || !password) {
         req.flash('info', 'Los campos son obligatorios');
-        return res.redirect('/login');
+        return res.redirect('login');
     }
     User.findOne({email})
         .then(user => {
@@ -60,7 +60,7 @@ router.post('/login', (req, res, next) => {
                 res.redirect('/');
             } else {
                 req.flash('info', 'Contraseña incorrecta');
-                res.redirect('/login');
+                res.redirect('login');
             }
         })
         .catch(error => {
@@ -70,7 +70,7 @@ router.post('/login', (req, res, next) => {
 
 router.post('/logout', (req, res, next) => {
     delete req.session.currentUser;
-    res.redirect('/login');
+    res.redirect('login');
 });
 
 module.exports = router;
