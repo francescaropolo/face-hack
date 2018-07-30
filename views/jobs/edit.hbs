@@ -1,8 +1,8 @@
-<h2>Create a new job</h2>
+<h2>Edit {{job}}</h2>
 
-<form action="/jobs/create" method="post">
+<form action="/jobs/{{id}}" method="post">
   <label for="">Title:</label>
-  <input type="text" name="title">
+  <input type="text" name="title" value="{{title}}">
 
   <label for="">Company:</label>
   <input type="text" name="company">
@@ -28,5 +28,5 @@
   <label for="">Vacancies:</label>
   <input type="number" name="vacancies">
 
-  <button type="submit">Create</button>
+  <button type="submit">Update</button>
 </form>

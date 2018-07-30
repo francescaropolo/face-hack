@@ -29,4 +29,51 @@ router.post('/create', (req,res,next) => {
     });
 });
 
+router.get('/:id', (req,res,next) => {
+  const { id } = req.params;
+  Job.findById(id)
+    .then(job => {
+      res.render('jobs/job', job);
+    })
+    .catch(error => {
+      next(error);
+    })
+})
+
+router.get('/:id/edit', (req,res,next) => {
+  const { id } = req.params;
+  Job.findById(id)
+    .then(job => {
+      res.render('jobs/edit', job);
+    })
+    .catch(error => {
+      next(error);
+    })
+  
+})
+
+router.post('/:id', (req,res,next) => {
+  const { id } = req.params;
+  const { title, company, type, description, salary, journeyType, vacancies } = req.body;
+  Job.findByIdAndUpdate(id, { title, company, type, description, salary, journeyType, vacancies })
+    .then(data => {
+      res.redirect(`/jobs/${id}`), data;
+    })
+    .catch(error => {
+      next(error);
+    })
+})
+
+router.post('/:id/delete', (req, res, next) => {  
+  Job.findByIdAndRemove(req.params.id)
+    .then(data => {
+      console.log(data);
+      res.redirect('/jobs');
+    })
+    .catch(error => {
+      next(error);
+    })
+})
+
+
 module.exports = router;
