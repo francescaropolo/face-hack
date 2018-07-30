@@ -1,5 +1,6 @@
 const createError = require('http-errors');
 const express = require('express');
+const hbs     = require('hbs');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
@@ -21,6 +22,8 @@ const app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
+
+hbs.registerPartials(__dirname + '/views/partials');
 
 app.use(session({
     store: new MongoStore({
