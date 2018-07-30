@@ -13,39 +13,11 @@ body {
 
 body {
   font-family: "Maven", sans-serif;
-  font-size: 16pt;
-  color: #fff;
   text-align: center;
 }
 
-h1 {
-  font-weight: 700;
-  font-size: 2.6em;
-}
-
-h2 {
-  font-size: 1em;
-}
-
-h3 {
-  font-size: 1.62em;
-}
-
-h4 {
-  font-size: 1.3em;
-}
-
-p {
-  font-size: 1em;
-  color: #1A7E80;
-}
-
-body {
-  background-color: #1A7E80;
-}
-
 .container {
-  margin: 0 50px;
+  margin: 0 10px;
 }
 
 /*# sourceMappingURL=style.css.map */
