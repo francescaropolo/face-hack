@@ -19,7 +19,7 @@ router.post('/signup', (req, res, next) => {
         .then(user => {
             if (user) {
                 req.flash('info', 'Usuario ya existente');
-                return res.redirect('/signup');
+                return res.redirect('signup');
             } else {
                 const salt = bcrypt.genSaltSync(saltRounds);
                 const hashedPassword = bcrypt.hashSync(password, salt);
