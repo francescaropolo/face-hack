@@ -11,14 +11,17 @@
   </li>
 {{#each jobs}}
   <li class="container">
-    <div class="job-item"><a href="/jobs/{{this.id}}">{{title}}</a></div>
+    <div class="job-item"><a href="/jobs/{{id}}">{{title}}</a></div>
     <div class="job-item">{{company}}</div>
     <div class="job-item">{{type}}</div>
     <div class="job-item">{{description}}</div>
     <div class="job-item">{{salary}}</div>
     <div class="job-item">{{journeyType}}</div>
     <div class="job-item">{{vacancies}}</div>
-    <form action="/jobs/{{this.id}}/delete" method="POST">
+    <form action="/jobs/{{id}}/edit" method="POST">
+      <input type="submit" value="EDIT">
+    </form>
+    <form action="/jobs/{{id}}/delete" method="POST">
       <input type="submit" value="DELETE">
     </form>
   </li>

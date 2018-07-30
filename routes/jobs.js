@@ -9,8 +9,7 @@ router.get('/', function(req, res, next) {
       res.render('jobs/list', { jobs });
     })
     .catch(error => {
-      next(error);
-      console.log('error', error);
+      next(error);      
     })
 });
 

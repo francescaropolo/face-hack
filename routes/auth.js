@@ -14,6 +14,7 @@ router.get('/signup', (req, res, next) => {
 
 router.post('/signup', (req, res, next) => {
     const {email, password} = req.body;
+    // To middleware (DRY)
     if (!email || !password) {
         req.flash('info', 'Los campos son obligatorios');
         return res.redirect('/auth/signup');
@@ -75,7 +76,7 @@ router.post('/login', (req, res, next) => {
 });
 
 router.post('/logout', (req, res, next) => {
-    delete req.session.currentUser;
+    delete req.session.currentUser; // Message deslogueado correctamente
     res.redirect('/auth/login');
 });
 
