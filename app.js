@@ -11,12 +11,12 @@ const flash = require('connect-flash');
 
 const authMiddlewares = require('./middlewares/auth');
 
+mongoose.connect('mongodb://localhost/facehack');
+
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const authRouter = require('./routes/auth');
 const jobsRouter = require('./routes/jobs');
-
-mongoose.connect('mongodb://localhost/facehack');
 
 const app = express();
 

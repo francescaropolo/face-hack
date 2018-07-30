@@ -14,11 +14,11 @@ router.get('/', function(req, res, next) {
     })
 });
 
-router.get('/add', (req,res,next) => {
-  res.render('jobs/add');
+router.get('/create', (req,res,next) => {
+  res.render('jobs/create');
 });
 
-router.post('/add', (req,res,next) => {
+router.post('/create', (req,res,next) => {
   const { title, company, type, description, salary, journeyType, vacancies } = req.body;
   Job.create({ title, company, type, description, salary, journeyType, vacancies })
     .then(() => {
