@@ -6,20 +6,23 @@ const saltRounds = 10;
 const User = require('../models/user');
 
 router.get('/signup', (req, res, next) => {
-    res.render('auth/signup');
+    const data = {
+        messages: req.flash('info')
+    };
+    res.render('auth/signup', data);
 });
 
 router.post('/signup', (req, res, next) => {
     const {email, password} = req.body;
     if (!email || !password) {
         req.flash('info', 'Los campos son obligatorios');
-        return res.redirect('signup');
+        return res.redirect('/auth/signup');
     }
     User.findOne({email})
         .then(user => {
             if (user) {
                 req.flash('info', 'Usuario ya existente');
-                return res.redirect('signup');
+                return res.redirect('/auth/signup');
             } else {
                 const salt = bcrypt.genSaltSync(saltRounds);
                 const hashedPassword = bcrypt.hashSync(password, salt);
@@ -40,27 +43,30 @@ router.post('/signup', (req, res, next) => {
 });
 
 router.get('/login', (req, res, next) => {
-    res.render('auth/login');
+    const data = {
+        messages: req.flash('info')
+    };
+    res.render('auth/login', data);
 });
 
 router.post('/login', (req, res, next) => {
     const {email, password} = req.body;
     if (!email || !password) {
         req.flash('info', 'Los campos son obligatorios');
-        return res.redirect('login');
+        return res.redirect('/auth/login');
     }
     User.findOne({email})
         .then(user => {
             if (!user) {
                 req.flash('info', 'No existe el usuario');
-                return res.redirect('/login');
+                return res.redirect('/auth/login');
             }
             if (bcrypt.compareSync(password, user.password)) {
                 req.session.currentUser = user;
                 res.redirect('/');
             } else {
                 req.flash('info', 'Contraseña incorrecta');
-                res.redirect('login');
+                res.redirect('/auth/login');
             }
         })
         .catch(error => {
@@ -70,7 +76,7 @@ router.post('/login', (req, res, next) => {
 
 router.post('/logout', (req, res, next) => {
     delete req.session.currentUser;
-    res.redirect('login');
+    res.redirect('/auth/login');
 });
 
 module.exports = router;
