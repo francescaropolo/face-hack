@@ -1,10 +1,12 @@
 var express = require('express');
 var router = express.Router();
 const Job = require('../models/job');
+const User = require('../models/user');
 
 /* GET jobs listing. */
 router.get('/', function(req, res, next) {
   Job.find()
+    .populate('User') // Populate before render
     .then((jobs) => {
       res.render('jobs/list', { jobs });
     })
@@ -19,9 +21,11 @@ router.get('/create', (req,res,next) => {
 
 router.post('/create', (req,res,next) => {
   const { title, company, type, description, salary, journeyType, vacancies } = req.body;
-  Job.create({ title, company, type, description, salary, journeyType, vacancies })
+  const { owner } = req.session.currentUser; // Review to fix
+  Job.create({ owner, title, company, type, description, salary, journeyType, vacancies })
     .then(() => {
       res.redirect('/jobs');
+      console.log(owner); // Review
     })
     .catch(error => {
       next(error);
@@ -30,8 +34,7 @@ router.post('/create', (req,res,next) => {
 
 router.get('/:id', (req,res,next) => {
   const { id } = req.params;
-  Job.findById(id)
-    .populate('User') // Populate before render
+  Job.findById(id)    
     .then(job => {
       res.render('jobs/job', job);
     })

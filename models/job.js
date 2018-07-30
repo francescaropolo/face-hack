@@ -1,9 +1,10 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const ObjectId = Schema.Types.ObjectId;
 
 const jobSchema = new Schema({
   // Owner: type: ObjectId, ref: 'User'; (populate)
-  owner: { type: Schema.Types.ObjectId, ref: 'User' },
+  owner: { type: ObjectId, ref: 'User' },
   title: String,
   company: String,
   type: String,
