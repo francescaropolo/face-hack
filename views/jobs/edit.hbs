@@ -11,8 +11,10 @@
   <select name="type">
       {{#ifEquals type "webdev"}}  
         <option value="webdev" selected>Web development</option>
+        <option value="ux-ui">UX/UI design</option>
       {{/ifEquals}}
       {{#ifEquals type "ux-ui"}}
+        <option value="webdev">Web development</option>
         <option value="ux-ui" selected>UX/UI design</option>
       {{/ifEquals}}
   </select>
@@ -25,11 +27,13 @@
 
   <label for="">Journey type:</label>
   <select name="journey">
-    {{#ifEquals journey "part-time"}}
+    {{#ifEquals journeyType "part-time"}}
       <option value="part-time" selected>Part-time</option>
+      <option value="full-time">Full-time</option>
     {{/ifEquals}}
-    {{#ifEquals journey "full-time"}}
-      <option value="full-time" selected>Full-time</option>
+    {{#ifEquals journeyType "full-time"}}
+      <option value="part-time">Part-time</option>
+      <option value="full-time" selected>Full-time</option>      
     {{/ifEquals}}
   </select>
 
