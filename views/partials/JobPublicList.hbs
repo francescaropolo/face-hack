@@ -2,10 +2,7 @@
 {{>jobheaders}}
 {{#each jobs}}
 <li class="container">
-  {{>jobcontent}}
-  {{#if ../currentUser}}
-    {{>joboptions}}
-  {{/if}}      
+  {{>jobcontent}}        
 </li>
 {{/each}}
 </ul>
