@@ -1,32 +1,32 @@
 <form action="/users/edit/{{currentUser._id}}" method="post">
     <div>
         <label for="">Name:</label>
-        <input type="text" name="name" value="{{currentUser.name}}">
+        <input type="text"class="uk-input" name="name" value="{{currentUser.name}}">
     </div>
 
     <div>
         <label for="">Last name:</label>
-        <input type="text" name="lastName" value="{{currentUser.lastName}}">
+        <input type="text" class="uk-input" name="lastName" value="{{currentUser.lastName}}">
     </div>
 
     <div>
         <label for="">Email:</label>
-        <input type="email" name="email" value="{{currentUser.email}}">
+        <input type="email" class="uk-input" name="email" value="{{currentUser.email}}">
     </div>
 
     <div>
         <label for="">Date of birth:</label>
-        <input type="date" name="dateOfBirth" value="{{currentUser.dateOfBirth}}">
+        <input type="date" class="uk-input" name="dateOfBirth" value="{{currentUser.dateOfBirth}}">
     </div>
 
     <div>
         <label for="">Phone:</label>
-        <input type="text" name="phone" value="{{currentUser.phone}}">
+        <input type="text" class="uk-input" name="phone" value="{{currentUser.phone}}">
     </div>
 
     <div>
         <label for="">Bio:</label>
-        <textarea name="bio">{{currentUser.bio}}</textarea>
+        <textarea name="bio" class="uk-textarea">{{currentUser.bio}}</textarea>
     </div>
 
     <div>
@@ -35,27 +35,27 @@
 
     <div>
         <label for="">Facebook:</label>
-        <input type="url" name="facebook" value="{{currentUser.socialNetworks.facebook}}">
+        <input type="url"class="uk-input" name="facebook" value="{{currentUser.socialNetworks.facebook}}">
     </div>
 
     <div>
         <label for="">Twitter:</label>
-        <input type="url" name="twitter" value="{{currentUser.socialNetworks.twitter}}">
+        <input type="url"class="uk-input" name="twitter" value="{{currentUser.socialNetworks.twitter}}">
     </div>
 
     <div>
         <label for="">Instagram:</label>
-        <input type="url" name="instagram" value="{{currentUser.socialNetworks.instagram}}">
+        <input type="url"class="uk-input" name="instagram" value="{{currentUser.socialNetworks.instagram}}">
     </div>
 
     <div>
         <label for="">Linkedin:</label>
-        <input type="url" name="linkedin" value="{{currentUser.socialNetworks.linkedin}}">
+        <input type="url" class="uk-input"name="linkedin" value="{{currentUser.socialNetworks.linkedin}}">
     </div>
 
     <div>
         <label for="">Github:</label>
-        <input type="url" name="github" value="{{currentUser.socialNetworks.github}}">
+        <input type="url" class="uk-input"name="github" value="{{currentUser.socialNetworks.github}}">
     </div>
 
     <input type="submit" value="Send!">

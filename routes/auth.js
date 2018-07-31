@@ -77,7 +77,7 @@ router.post('/login', (req, res, next) => {
 
 router.post('/logout', (req, res, next) => {
     delete req.session.currentUser; // Message deslogueado correctamente
-    res.redirect('/auth/login');
+    res.redirect('/');
 });
 
 module.exports = router;
