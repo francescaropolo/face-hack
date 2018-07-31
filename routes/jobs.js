@@ -7,7 +7,7 @@ router.get('/', (req, res, next) => {
     Job.find()
         .populate('owner')
         .then((jobs) => {
-            res.render('jobs/list', { jobs });
+            res.render('jobs/JobPrivateList', { jobs });
         })
         .catch(error => {
             next(error);
