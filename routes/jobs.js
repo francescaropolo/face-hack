@@ -56,19 +56,17 @@ router.get('/:id/edit', (req, res, next) => {
 
 router.post('/:id/apply', (req, res, next) => {
     const { id } = req.params;
-    const applicants = req.session.currentUser._id;    
-    
-    Job.find({"applicants" : ObjectId(applicants)})
-        .then(applicant => {
-            if (!applicant) {
-                Job.findByIdAndUpdate(id, { $push: { applicants: applicants } })
-                    .then(() => {            
-                        res.redirect('/');
-                    })
-                    .catch(error => {
-                        next(error);
-                    });    
-            } 
+    const userId = req.session.currentUser._id;        
+    Job.findById(id)
+        .then(job => {            
+            if (job && !job.applicants.some(applicantId => {                
+                return applicantId.toString() === userId;
+            })) {                
+                return Job.findByIdAndUpdate(id, { $push: { applicants: userId } })              
+            }             
+        })
+        .then(() => {
+            res.redirect('/');
         })
         .catch(error => {
             next(error);
@@ -87,19 +85,18 @@ router.post('/:id', (req, res, next) => {
         });
 });
 
-
-
 // GET and list applicants view
-// router.get('/:id/applicants', (req, res, next) => { 
-//     const { id } = req.params;   
-//     Job.find()
-//         .then(applicants => {
-//             res.render('jobs/applicants', applicants);
-//         })
-//         .catch(error => {
-//             next(error);
-//         });
-// });
+router.get('/:id/applicants', (req, res, next) => { 
+    const { id } = req.params;   
+    Job.findById(id)
+        .populate('applicants')
+        .then(job => {
+            res.render('jobs/applicants', job);
+        })
+        .catch(error => {
+            next(error);
+        });
+});
 
 router.post('/:id/delete', (req, res, next) => {
     Job.findByIdAndRemove(req.params.id)
