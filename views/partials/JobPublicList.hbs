@@ -1,8 +1,22 @@
-<ul>
-{{>jobheaders}}
+<div class="uk-flex uk-flex-row uk-flex-around@m uk-flex-around@l">
+{{!-- {{>jobheaders}} --}}
 {{#each jobs}}
-<li class="container">
-  {{>jobcontent}}
-</li>
+  {{!-- {{>jobcontent}} --}}
+    <div class="uk-card uk-card-default uk-width-1-4@m uk-width-1-1@s">
+        <div class="uk-card-header">
+            <div class="uk-grid-small uk-flex-middle" uk-grid>
+                <div class="uk-width-expand">
+                    <h3 class="uk-card-title uk-margin-remove-bottom">{{title}}</h3>
+                    <p class="uk-text-meta uk-margin-remove-top"><time datetime="2016-04-01T19:00">April 01, 2016</time></p>
+                </div>
+            </div>
+        </div>
+        <div class="uk-card-body">
+            <p>{{description}}</p>
+        </div>
+        <div class="uk-card-footer">
+            <a href="/jobs/{{id}}" class="uk-button uk-button-text">More info</a>
+        </div>
+    </div>
 {{/each}}
-</ul>
+</div>
