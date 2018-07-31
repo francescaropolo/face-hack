@@ -18,12 +18,12 @@
             <a href="/jobs/{{id}}" class="uk-button uk-button-text">More info</a>
         </div>
 
-        {{#if currentUser}}
-            <div class="uk-card-footer">
-                <a href="/jobs/apply/{{id}}" class="uk-button uk-button-text">Apply</a>
-            </div>
+        {{#if ../currentUser}}
+            <form action="/jobs/{{id}}/apply" method="POST" class="uk-card-footer">
+                <button class="uk-button uk-button-default uk-button-primary" type="submit">Apply</button>
+            </form>
         {{/if}}        
-        
+
     </div>
 {{/each}}
 </div>

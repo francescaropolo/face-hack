@@ -54,30 +54,52 @@ router.get('/:id/edit', (req, res, next) => {
         });
 });
 
+router.post('/:id/apply', (req, res, next) => {
+    const { id } = req.params;
+    const applicants = req.session.currentUser._id;    
+    
+    Job.find({"applicants" : ObjectId(applicants)})
+        .then(applicant => {
+            if (!applicant) {
+                Job.findByIdAndUpdate(id, { $push: { applicants: applicants } })
+                    .then(() => {            
+                        res.redirect('/');
+                    })
+                    .catch(error => {
+                        next(error);
+                    });    
+            } 
+        })
+        .catch(error => {
+            next(error);
+        });     
+});
+
 router.post('/:id', (req, res, next) => {
     const { id } = req.params;
     const { title, company, type, description, salary, journeyType, vacancies } = req.body;
     Job.findByIdAndUpdate(id, { title, company, type, description, salary, journeyType, vacancies })
         .then(data => {
-            res.redirect(`/jobs/${id}`, data);
+            res.redirect(`/jobs/${id}`), data;
         })
         .catch(error => {
             next(error);
         });
 });
+
+
 
 // GET and list applicants view
-router.get('/:id/applicants', (req, res, next) => {
-    
-    Job.find()
-        .then(applicants => {
-            res.render('jobs/applicants', applicants);
-        })
-        .catch(error => {
-            next(error);
-        });
-});
-
+// router.get('/:id/applicants', (req, res, next) => { 
+//     const { id } = req.params;   
+//     Job.find()
+//         .then(applicants => {
+//             res.render('jobs/applicants', applicants);
+//         })
+//         .catch(error => {
+//             next(error);
+//         });
+// });
 
 router.post('/:id/delete', (req, res, next) => {
     Job.findByIdAndRemove(req.params.id)
