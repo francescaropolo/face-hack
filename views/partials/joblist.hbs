@@ -19,10 +19,7 @@
     <div class="job-item">{{salary}}</div>
     <div class="job-item">{{journeyType}}</div>
     <div class="job-item">{{vacancies}}</div>
-    <div class="job-item"><a href="/users/{{owner._id}}">{{owner.email}}</a></div>
-    {{#ifEquals currentUser._id owner._id}}
-      {{>joboptions}}
-    {{/ifEquals}}
+    <div class="job-item"><a href="/users/{{owner._id}}">{{owner.email}}</a></div>    
   </li>
 {{/each}}
 </ul>
