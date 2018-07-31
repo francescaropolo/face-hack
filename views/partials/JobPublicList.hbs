@@ -3,6 +3,9 @@
 {{#each jobs}}
 <li class="container">
   {{>jobcontent}}
+  {{#if ../currentUser}}
+    {{>joboptions}}
+  {{/if}}      
 </li>
 {{/each}}
 </ul>
