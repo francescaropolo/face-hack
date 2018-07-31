@@ -18,7 +18,7 @@ router.get('/:id', (req, res, next) => {
 
     const {id} = req.params;
     User.findById(id)
-        .then(user => {
+        .then(() => {
             res.render('users/user', data);
         })
         .catch(error => {

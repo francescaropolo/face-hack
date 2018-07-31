@@ -13,19 +13,18 @@
         <ul class="uk-nav uk-nav-default">
             <button class="uk-offcanvas-close" type="button" uk-close></button>
             {{#if currentUser}}
-                <li class="uk-navbar-item"><div>Logged: {{currentUser.email}}</div></li>
-                <li class="uk-navbar-item">
-                    <ul class="uk-nav uk-navbar-dropdown-nav">
-                        <li><a href="/users/{{currentUser._id}}">My profile</a></li>
-                        <li><a href="/users/edit/{{currentUser._id}}">Edit profile</a></li>
-                        <li><a href="/jobs/create">Create job</a></li>
-                        <li><a href="/jobs">View jobs</a></li>
-                        <li class="uk-nav-divider"></li>
-                        <li><form action="/auth/logout" method="POST"> <button type="submit" class="uk-button uk-button-default">Logout</button> </form></li>
-                    </ul>
-                </li>
+            <ul class="uk-nav">
+                <li><div>Logged: {{currentUser.email}}</div></li>
+                <li class="uk-nav-header">Menu</li>
+                <li><a href="/users/{{currentUser._id}}">My profile</a></li>
+                <li><a href="/users/edit/{{currentUser._id}}">Edit profile</a></li>
+                <li><a href="/jobs/create">Create jobs</a></li>
+                <li><a href="/jobs">View jobs</a></li>
+                <li class="uk-nav-divider"></li>
+                <li><form action="/auth/logout" method="POST"> <button type="submit" class="uk-button uk-button-default">Logout</button> </form></li>
+                </ul>
             {{else}}
-                <ul class="uk-nav uk-navbar-dropdown-nav">
+                <ul class="uk-nav">
                     <li class="uk-nav-header">Menu</li>
                     <li> <a href="/auth/signup">Sign up</a> </li>
                     <li> <a href="/auth/login">Login</a> </li>
@@ -44,10 +43,10 @@
              {{#if currentUser}}
                 <li class="uk-navbar-item uk-hidden-small"><div>Logged: {{currentUser.email}}</div></li>
                 <li class="uk-navbar-item uk-hidden-small">
-                    <a href="#">Options</a>
+                    <a href="#">Menu</a>
                     <div class="uk-navbar-dropdown">
                         <ul class="uk-nav uk-navbar-dropdown-nav">
-                            <li class="uk-nav-header">Header</li>
+                            <li class="uk-nav-header">Menu</li>
                             <li><a href="/users/{{currentUser._id}}">My profile</a></li>
                             <li><a href="/users/edit/{{currentUser._id}}">Edit profile</a></li>
                             <li><a href="/jobs/create">Create jobs</a></li>
