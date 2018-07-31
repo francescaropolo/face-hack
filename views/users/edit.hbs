@@ -1,62 +1,85 @@
-<form action="/users/edit/{{currentUser._id}}" method="post">
-    <div>
-        <label for="">Name:</label>
-        <input type="text"class="uk-input" name="name" value="{{currentUser.name}}">
+<form action="/users/edit/{{currentUser._id}}" method="post" class="uk-grid-small" uk-grid>
+     <div class="uk-width-1-1@s uk-width-1-2@m uk-width-1-5@l uk-width-1-7@xl">
+        <label class="uk-form-label" for="form-stacked-text">Name:</label>
+        <div class="uk-form-controls">
+            <input id="form-stacked-text" type="text" class="uk-input uk-form-width-medium" name="name" value="{{currentUser.name}}">
+        </div>
     </div>
 
-    <div>
-        <label for="">Last name:</label>
-        <input type="text" class="uk-input" name="lastName" value="{{currentUser.lastName}}">
+     <div class="uk-width-1-1@s uk-width-1-2@m uk-width-1-5@l uk-width-1-7@xl">
+        <label class="uk-form-label" for="form-stacked-text">Last name:</label>
+        <div class="uk-form-controls">
+            <input id="form-stacked-text" type="text" class="uk-input uk-form-width-medium" name="lastName" value="{{currentUser.lastName}}">
+        </div>
     </div>
 
-    <div>
-        <label for="">Email:</label>
-        <input type="email" class="uk-input" name="email" value="{{currentUser.email}}">
+     <div class="uk-width-1-1@s uk-width-1-2@m uk-width-1-5@l uk-width-1-7@xl">
+        <label class="uk-form-label" for="form-stacked-text">Email:</label>
+        <div class="uk-form-controls">
+            <input id="form-stacked-text" type="email" class="uk-input uk-form-width-medium" name="email" value="{{currentUser.email}}">
+        </div>
     </div>
 
-    <div>
-        <label for="">Date of birth:</label>
-        <input type="date" class="uk-input" name="dateOfBirth" value="{{currentUser.dateOfBirth}}">
+     <div class="uk-width-1-1@s uk-width-1-2@m uk-width-1-5@l uk-width-1-7@xl">
+        <label class="uk-form-label" for="form-stacked-text">Date of birth:</label>
+        <div class="uk-form-controls">
+            <input id="form-stacked-text" type="date" class="uk-input uk-form-width-medium" name="dateOfBirth" value="{{currentUser.dateOfBirth}}">
+        </div>
     </div>
 
-    <div>
-        <label for="">Phone:</label>
-        <input type="text" class="uk-input" name="phone" value="{{currentUser.phone}}">
+     <div class="uk-width-1-1@s uk-width-1-2@m uk-width-1-5@l uk-width-1-7@xl">
+        <label class="uk-form-label" for="form-stacked-text">Phone:</label>
+        <div class="uk-form-controls">
+            <input id="form-stacked-text" type="text" class="uk-input uk-form-width-medium" name="phone" value="{{currentUser.phone}}">
+        </div>
     </div>
 
-    <div>
-        <label for="">Bio:</label>
-        <textarea name="bio" class="uk-textarea">{{currentUser.bio}}</textarea>
+     <div class="uk-width-1-1@s uk-width-1-1@m uk-width-1-5@l uk-width-1-7@xl">
+        <label class="uk-form-label" for="form-stacked-text">Bio:</label>
+        <div class="uk-form-controls">
+            <textarea name="bio" class="uk-textarea uk-form-width-medium">{{currentUser.bio}}</textarea>
+        </div>
     </div>
 
-    <div>
-        <label for="">Social networks:</label>
+     <div class="uk-width-1-1@s uk-width-1-1@m uk-width-1-5@l uk-width-1-7@xl">
+        <label class="uk-form-label" for="form-stacked-text">Social networks:</label>
     </div>
 
-    <div>
-        <label for="">Facebook:</label>
-        <input type="url"class="uk-input" name="facebook" value="{{currentUser.socialNetworks.facebook}}">
+     <div class="uk-width-1-1@s uk-width-1-2@m uk-width-1-5@l uk-width-1-7@xl">
+        <label class="uk-form-label" for="form-stacked-text">Facebook:</label>
+        <div class="uk-form-controls">
+            <input id="form-stacked-text" type="url"class="uk-input uk-form-width-medium" name="facebook" value="{{currentUser.socialNetworks.facebook}}">
+        </div>
     </div>
 
-    <div>
-        <label for="">Twitter:</label>
-        <input type="url"class="uk-input" name="twitter" value="{{currentUser.socialNetworks.twitter}}">
+     <div class="uk-width-1-1@s uk-width-1-2@m uk-width-1-5@l uk-width-1-7@xl">
+        <label class="uk-form-label" for="form-stacked-text">Twitter:</label>
+        <div class="uk-form-controls">
+            <input id="form-stacked-text" type="url"class="uk-input uk-form-width-medium" name="twitter" value="{{currentUser.socialNetworks.twitter}}">
+        </div>
     </div>
 
-    <div>
-        <label for="">Instagram:</label>
-        <input type="url"class="uk-input" name="instagram" value="{{currentUser.socialNetworks.instagram}}">
+     <div class="uk-width-1-1@s uk-width-1-2@m uk-width-1-5@l uk-width-1-7@xl">
+        <label class="uk-form-label" for="form-stacked-text">Instagram:</label>
+        <div class="uk-form-controls">
+            <input id="form-stacked-text" type="url"class="uk-input uk-form-width-medium" name="instagram" value="{{currentUser.socialNetworks.instagram}}">
+        </div>
     </div>
 
-    <div>
-        <label for="">Linkedin:</label>
-        <input type="url" class="uk-input"name="linkedin" value="{{currentUser.socialNetworks.linkedin}}">
+     <div class="uk-width-1-1@s uk-width-1-2@m uk-width-1-5@l uk-width-1-7@xl">
+        <label class="uk-form-label" for="form-stacked-text">Linkedin:</label>
+        <div class="uk-form-controls">
+            <input id="form-stacked-text" type="url" class="uk-input uk-form-width-medium" name="linkedin" value="{{currentUser.socialNetworks.linkedin}}">
+        </div>
     </div>
 
-    <div>
-        <label for="">Github:</label>
-        <input type="url" class="uk-input"name="github" value="{{currentUser.socialNetworks.github}}">
+     <div class="uk-width-1-1@s uk-width-1-2@m uk-width-1-5@l uk-width-1-7@xl">
+        <label class="uk-form-label" for="form-stacked-text">Github:</label>
+        <div class="uk-form-controls">
+            <input id="form-stacked-text" type="url" class="uk-input uk-form-width-medium" name="github" value="{{currentUser.socialNetworks.github}}">
+        </div>
     </div>
-
-    <input type="submit" value="Send!">
+    <div>
+        <input id="form-stacked-text" type="submit" value="Send!">
+    </div>
 </form>
