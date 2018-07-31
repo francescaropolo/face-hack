@@ -1,1 +1,12 @@
-Hello {{currentUser.email}}!
+Hello {{#if currentUser.name}}
+    {{currentUser.name}}!
+    {{else}}
+    {{currentUser.email}}!
+{{/if}}
+{{#if messages.length}}
+    <div class="uk-alert-success" uk-alert>
+        <a class="uk-alert-close" uk-close></a>
+        <h3>Yay!</h3>
+        <p>{{#each messages}}{{this}}{{/each}}</p>
+    </div>
+{{/if}}

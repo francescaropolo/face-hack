@@ -1,0 +1,62 @@
+<form action="/users/edit/{{currentUser._id}}" method="post">
+    <div>
+        <label for="">Name:</label>
+        <input type="text" name="name" value="{{currentUser.name}}">
+    </div>
+
+    <div>
+        <label for="">Last name:</label>
+        <input type="text" name="lastName" value="{{currentUser.lastName}}">
+    </div>
+
+    <div>
+        <label for="">Email:</label>
+        <input type="email" name="email" value="{{currentUser.email}}">
+    </div>
+
+    <div>
+        <label for="">Date of birth:</label>
+        <input type="date" name="dateOfBirth" value="{{currentUser.dateOfBirth}}">
+    </div>
+
+    <div>
+        <label for="">Phone:</label>
+        <input type="text" name="phone" value="{{currentUser.phone}}">
+    </div>
+
+    <div>
+        <label for="">Bio:</label>
+        <textarea name="bio">{{currentUser.bio}}</textarea>
+    </div>
+
+    <div>
+        <label for="">Social networks:</label>
+    </div>
+
+    <div>
+        <label for="">Facebook:</label>
+        <input type="url" name="facebook" value="{{currentUser.socialNetworks.facebook}}">
+    </div>
+
+    <div>
+        <label for="">Twitter:</label>
+        <input type="url" name="twitter" value="{{currentUser.socialNetworks.twitter}}">
+    </div>
+
+    <div>
+        <label for="">Instagram:</label>
+        <input type="url" name="instagram" value="{{currentUser.socialNetworks.instagram}}">
+    </div>
+
+    <div>
+        <label for="">Linkedin:</label>
+        <input type="url" name="linkedin" value="{{currentUser.socialNetworks.linkedin}}">
+    </div>
+
+    <div>
+        <label for="">Github:</label>
+        <input type="url" name="github" value="{{currentUser.socialNetworks.github}}">
+    </div>
+
+    <input type="submit" value="Send!">
+</form>

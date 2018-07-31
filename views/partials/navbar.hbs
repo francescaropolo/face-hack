@@ -16,7 +16,8 @@
                 <li class="uk-navbar-item"><div>Logged: {{currentUser.email}}</div></li>
                 <li class="uk-navbar-item">
                     <ul class="uk-nav uk-navbar-dropdown-nav">
-                        <li><a href="/users">My profile</a></li>
+                        <li><a href="/users/{{currentUser._id}}">My profile</a></li>
+                        <li><a href="/users/edit/{{currentUser._id}}">Edit profile</a></li>
                         <li><a href="/jobs/create">Create job</a></li>
                         <li><a href="/jobs">View jobs</a></li>
                         <li class="uk-nav-divider"></li>
@@ -47,7 +48,8 @@
                     <div class="uk-navbar-dropdown">
                         <ul class="uk-nav uk-navbar-dropdown-nav">
                             <li class="uk-nav-header">Header</li>
-                            <li><a href="/users">My profile</a></li>
+                            <li><a href="/users/{{currentUser._id}}">My profile</a></li>
+                            <li><a href="/users/edit/{{currentUser._id}}">Edit profile</a></li>
                             <li><a href="/jobs/create">Create jobs</a></li>
                             <li><a href="/jobs">View jobs</a></li>
                             <li class="uk-nav-divider"></li>
