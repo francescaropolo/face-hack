@@ -1,44 +1,70 @@
 <h2>Edit job: {{title}}</h2>
 
-<form action="/jobs/{{id}}" method="post">
-  <label for="">Title:</label>
-  <input type="text" name="title" value="{{title}}">
+<form action="/jobs/{{id}}" method="post" class="uk-grid-small" uk-grid>
+    <div class="uk-width-1-1@s uk-width-1-2@m uk-width-1-5@l uk-width-1-7@xl">
+        <label class="uk-form-label" for="form-stacked-text">Title:</label>
+        <div class="uk-form-controls">
+            <input id="form-stacked-text" class="uk-input uk-form-width-medium" type="text" name="title" value="{{title}}">
+        </div>
+    </div>
 
-  <label for="">Company:</label>
-  <input type="text" name="company" value="{{company}}">
+    <div class="uk-width-1-1@s uk-width-1-2@m uk-width-1-5@l uk-width-1-7@xl">
+        <label class="uk-form-label" for="form-stacked-text">Company:</label>
+        <div class="uk-form-controls">
+            <input id="form-stacked-text" class="uk-input uk-form-width-medium" type="text" name="company" value="{{company}}">
+        </div>
+    </div>
 
-  <label for="">Type:</label>
-  <select name="type">
-      {{#ifEquals type "webdev"}}  
-        <option value="webdev" selected>Web development</option>
-        <option value="ux-ui">UX/UI design</option>
-      {{/ifEquals}}
-      {{#ifEquals type "ux-ui"}}
-        <option value="webdev">Web development</option>
-        <option value="ux-ui" selected>UX/UI design</option>
-      {{/ifEquals}}
-  </select>
+    <div class="uk-width-1-1@s uk-width-1-2@m uk-width-1-5@l uk-width-1-7@xl">
+        <label class="uk-form-label" for="form-stacked-text">Type:</label>
+        <select name="type">
+            {{#ifEquals type "webdev"}}  
+                <option value="webdev" selected>Web development</option>
+                <option value="ux-ui">UX/UI design</option>
+            {{/ifEquals}}
+            {{#ifEquals type "ux-ui"}}
+                <option value="webdev">Web development</option>
+                <option value="ux-ui" selected>UX/UI design</option>
+            {{/ifEquals}}
+        </select>
+    </div>
 
-  <label for="">Description:</label>
-  <input type="text" name="description" value="{{description}}">
+    <div class="uk-width-1-1@s uk-width-1-2@m uk-width-1-5@l uk-width-1-7@xl">
+        <label class="uk-form-label" for="form-stacked-text">Description:</label>
+        <div class="uk-form-controls">
+            <input id="form-stacked-text" class="uk-input uk-form-width-medium" type="text" name="description" value="{{description}}">
+        </div>
+    </div>
 
-  <label for="">Salary:</label>
-  <input type="number" name="salary" value="{{salary}}">
+    <div class="uk-width-1-1@s uk-width-1-2@m uk-width-1-5@l uk-width-1-7@xl">
+        <label class="uk-form-label" for="form-stacked-text">Salary:</label>
+        <div class="uk-form-controls">
+            <input id="form-stacked-text" class="uk-input uk-form-width-medium" type="number" name="salary" value="{{salary}}">
+        </div>
+    </div>
+    
+    <div class="uk-width-1-1@s uk-width-1-2@m uk-width-1-5@l uk-width-1-7@xl">
+        <label class="uk-form-label" for="form-stacked-text">Journey type:</label>
+        <select name="journeyType">
+            {{#ifEquals journeyType "part-time"}}
+                <option value="part-time" selected>Part-time</option>
+                <option value="full-time">Full-time</option>
+            {{/ifEquals}}
+            {{#ifEquals journeyType "full-time"}}
+                <option value="part-time">Part-time</option>
+                <option value="full-time" selected>Full-time</option>      
+            {{/ifEquals}}
+        </select>
+    </div>
 
-  <label for="">Journey type:</label>
-  <select name="journeyType">
-    {{#ifEquals journeyType "part-time"}}
-      <option value="part-time" selected>Part-time</option>
-      <option value="full-time">Full-time</option>
-    {{/ifEquals}}
-    {{#ifEquals journeyType "full-time"}}
-      <option value="part-time">Part-time</option>
-      <option value="full-time" selected>Full-time</option>      
-    {{/ifEquals}}
-  </select>
+    <div class="uk-width-1-1@s uk-width-1-2@m uk-width-1-5@l uk-width-1-7@xl">
+        <label class="uk-form-label" for="form-stacked-text">Vacancies:</label>
+        <div class="uk-form-controls">
+            <input id="form-stacked-text" class="uk-input uk-form-width-medium" type="number" name="vacancies" value="{{vacancies}}">
+        </div>
+    </div>
 
-  <label for="">Vacancies:</label>
-  <input type="number" name="vacancies" value="{{vacancies}}">
-
-  <button type="submit">Update</button>
+    <div class="uk-width-1-1@s uk-width-1-2@m uk-width-1-5@l uk-width-1-7@xl" uk-margin>
+        <button type="submit">Update</button>
+    </div>
 </form>
