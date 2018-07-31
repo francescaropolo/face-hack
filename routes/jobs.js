@@ -1,17 +1,19 @@
 var express = require('express');
 var router = express.Router();
+var ObjectId = require('mongodb').ObjectID;
 const Job = require('../models/job');
 
-/* GET jobs listing. */
+/* GET jobs listing only logged user jobs */
 router.get('/', (req, res, next) => {
-    Job.find()
+    const oid = req.session.currentUser._id;
+    Job.find(({"owner" : ObjectId(oid)}))
         .populate('owner')
-        .then((jobs) => {
+        .then((jobs) => {            
             res.render('jobs/JobPrivateList', { jobs });
         })
         .catch(error => {
             next(error);
-        });
+        });    
 });
 
 router.get('/create', (req, res, next) => {
