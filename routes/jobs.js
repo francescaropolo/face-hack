@@ -66,6 +66,19 @@ router.post('/:id', (req, res, next) => {
         });
 });
 
+// GET and list applicants view
+router.get('/:id/applicants', (req, res, next) => {
+    
+    Job.find()
+        .then(applicants => {
+            res.render('jobs/applicants', applicants);
+        })
+        .catch(error => {
+            next(error);
+        });
+});
+
+
 router.post('/:id/delete', (req, res, next) => {
     Job.findByIdAndRemove(req.params.id)
         .then(data => {

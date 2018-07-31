@@ -17,6 +17,13 @@
         <div class="uk-card-footer">
             <a href="/jobs/{{id}}" class="uk-button uk-button-text">More info</a>
         </div>
+
+        {{#if currentUser}}
+            <div class="uk-card-footer">
+                <a href="/jobs/apply/{{id}}" class="uk-button uk-button-text">Apply</a>
+            </div>
+        {{/if}}        
+        
     </div>
 {{/each}}
 </div>
