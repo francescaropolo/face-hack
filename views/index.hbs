@@ -1,3 +1,10 @@
+{{#if sessionFlash.message}}
+    <div class="{{ sessionFlash.type }}" uk-alert>
+        <a class="uk-alert-close" uk-close></a>
+        <h3>{{ sessionFlash.messageTitle }}</h3>
+        <p>{{ sessionFlash.message }}</p>
+    </div>
+{{/if}}
 <div class="uk-position-relative uk-visible-toggle uk-light" uk-slideshow="animation: push; min-height: 300; max-height: 500">
 
     <ul class="uk-slideshow-items">

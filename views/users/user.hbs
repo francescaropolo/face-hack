@@ -3,10 +3,10 @@ Hello {{#if currentUser.name}}
     {{else}}
     {{currentUser.email}}!
 {{/if}}
-{{#if messages.length}}
-    <div class="uk-alert-success" uk-alert>
+{{#if sessionFlash.message}}
+    <div class="{{ sessionFlash.type }}" uk-alert>
         <a class="uk-alert-close" uk-close></a>
-        <h3>Yay!</h3>
-        <p>{{#each messages}}{{this}}{{/each}}</p>
+        <h3>{{ sessionFlash.messageTitle }}</h3>
+        <p>{{ sessionFlash.message }}</p>
     </div>
 {{/if}}

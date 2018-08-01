@@ -9,7 +9,7 @@ const logger = require('morgan');
 const mongoose = require('mongoose');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
-const flash = require('connect-flash');
+const flash = require('express-flash');
 
 require('./helpers/handlebars');
 const authMiddlewares = require('./middlewares/auth');
@@ -44,6 +44,12 @@ app.use(session({
 }));
 
 app.use(flash());
+
+app.use((req, res, next) => {
+    res.locals.sessionFlash = req.session.sessionFlash;
+    delete req.session.sessionFlash;
+    next();
+});
 
 app.use(logger('dev'));
 app.use(express.json());

@@ -5,11 +5,11 @@
         <input type="password" placeholder="Password" name="password" class="uk-input uk-form-blank uk-form-width-medium" required>
     </div>
 
-    {{#if messages.length}}
-    <div class="uk-alert-danger" uk-alert>
+    {{#if sessionFlash.message}}
+    <div class="{{ sessionFlash.type }}" uk-alert>
         <a class="uk-alert-close" uk-close></a>
-        <h3>Error</h3>
-        <p>{{#each messages}}{{this}}{{/each}}</p>
+        <h3>{{ sessionFlash.messageTitle }}</h3>
+        <p>{{ sessionFlash.message }}</p>
     </div>
     {{/if}}
     <div class="field">
