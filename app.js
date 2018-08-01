@@ -19,6 +19,7 @@ const authMiddlewares = require('./middlewares/auth');
 
 mongoose.connect('mongodb://localhost/facehack');
 
+
 // Routes
 const index = require('./routes/index');
 const users = require('./routes/users');

@@ -5,12 +5,26 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Maven+Pro" rel="stylesheet">
-    <link rel="stylesheet" href="/uikit/css/uikit.min.css" />
+    <link rel="stylesheet" href="/uikit/css/uikit.min.css"/>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script>
+      Dropzone.options.dropImg = {
+          init: () => {
+            this.on("success", (file) => {
+            console.log("success done");
+            });
+            this.on("addedfile", (file) => {
+            console.log("added");
+            });
+          },
+          dictDefaultMessage: "Drop your image file here"
+      };
+    </script>
   </head>
   <body>
     {{>navbar}}
     {{{body}}}
+    <script src="https://rawgit.com/enyo/dropzone/master/dist/dropzone.js"></script>
     <script src="/uikit/js/uikit.min.js"></script>
     <script src="/uikit/js/uikit-icons.min.js"></script>
   </body>

@@ -17,7 +17,8 @@ const userSchema = new Schema({
         instagram: String,
         linkedin: String,
         github: String
-    }
+    },
+    picturePath: String
 }, {
     timestamps: {
         createdAt: 'created_at',

@@ -1,4 +1,4 @@
-<form action="/users/edit/{{currentUser._id}}" method="post" class="uk-grid-small" uk-grid>
+<form enctype="multipart/form-data" action="/users/edit/{{currentUser._id}}" method="post" class="uk-grid-small" uk-grid>
     <div class="uk-width-1-1@s uk-width-1-2@m uk-width-1-5@l uk-width-1-7@xl">
         <label class="uk-form-label" for="form-stacked-text">Name:</label>
         <div class="uk-form-controls">
@@ -79,6 +79,11 @@
             <input id="form-stacked-text" type="url" class="uk-input uk-form-width-medium" name="github" value="{{currentUser.socialNetworks.github}}">
         </div>
     </div>
+
+    <section>
+    <h3>Upload your photo</h3>
+        <input type="file" name="picture">
+    </section>
     <div class="uk-width-1-1@s uk-width-1-2@m uk-width-1-5@l uk-width-1-7@xl" uk-margin>
         <button class="uk-button uk-button-default uk-button-primary" type="submit">Send</button>
     </div>
