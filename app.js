@@ -1,3 +1,5 @@
+'use strict';
+
 const createError = require('http-errors');
 const express = require('express');
 const hbs = require('hbs');
@@ -54,7 +56,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// To middleware
+// @TODO To middleware
 app.use((req, res, next) => {
     app.locals.currentUser = req.session.currentUser;
     next();

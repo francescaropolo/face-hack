@@ -1,3 +1,27 @@
 <h1>{{title}}</h1>
 <h2>Ironhack social network to share and find jobs</h2>
-{{>JobPublicList}}
+<div class="uk-grid-small uk-flex-wrap uk-flex-top uk-flex-row uk-flex-around@m uk-flex-around@l uk-flex-around@xl" uk-grid="masonry: true">
+{{#each jobs}}
+    <div class="uk-card uk-card-default uk-width-1-2@s uk-width-1-3@m uk-width-1-4@l uk-width-1-6@xl">
+        <div class="uk-card-header">
+            <div class="uk-grid-small uk-flex-middle" uk-grid>
+                <div class="uk-width-expand">
+                    <h3 class="uk-card-title uk-margin-remove-bottom">{{title}}</h3>
+                    <p class="uk-text-meta uk-margin-remove-top"><time datetime="2016-04-01T19:00">April 01, 2016</time></p>
+                </div>
+            </div>
+        </div>
+        <div class="uk-card-body">
+            <p>{{description}}</p>
+        </div>
+        <div class="uk-card-footer">
+            <a href="/jobs/{{id}}" class="uk-button uk-button-text">More info</a>
+        </div>
+        {{#if ../currentUser}}
+            <form action="/jobs/{{id}}/apply" method="POST" class="uk-card-footer">
+                <button class="uk-button uk-button-default uk-button-primary" type="submit">Apply</button>
+            </form>
+        {{/if}}        
+    </div>
+{{/each}}
+</div>
