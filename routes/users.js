@@ -5,6 +5,7 @@ const router = express.Router();
 const User = require('../models/user');
 const authMiddlewares = require('../middlewares/auth');
 
+// GET rendeing profile
 router.get('/:id', (req, res, next) => {
     const data = {
         messages: req.flash('info')
@@ -20,10 +21,12 @@ router.get('/:id', (req, res, next) => {
         });
 });
 
+// GET rendering edit form
 router.get('/edit/:id', authMiddlewares.requireUser, (req, res, next) => {
     res.render('users/edit');
 });
 
+// POST update the user data on DB
 router.post('/edit/:id', authMiddlewares.requireUser, (req, res, next) => {
     const {id} = req.params;
     const {name, lastName, email, dateOfBirth, phone, bio, facebook, twitter, instagram, linkedin, github} = req.body;
