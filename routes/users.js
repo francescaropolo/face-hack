@@ -11,10 +11,10 @@ router.get('/:id', (req, res, next) => {
         sessionFlash: res.locals.sessionFlash
     };
 
-    const {id} = req.params;
+    const { id } = req.params;
     User.findById(id)
-        .then(() => {
-            res.render('users/user', data);
+        .then(user => {
+            res.render('users/user', {user, data});
         })
         .catch(error => {
             next(error);

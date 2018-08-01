@@ -5,38 +5,42 @@
         <p>{{ sessionFlash.message }}</p>
     </div>
 {{/if}}
-<div class="uk-card uk-card-default uk-width-1-2@m">
+<div class="uk-card uk-card-default uk-width-1-2@m uk-width-1-1@l">
     <div class="uk-card-header">
         <div class="uk-grid-small uk-flex-middle" uk-grid>
-            {{!-- <div class="uk-width-auto">
+            <div class="uk-width-auto">
                 <img class="uk-border-circle" width="40" height="40" src="images/avatar.jpg">
-            </div> --}}
+            </div>
             <div class="uk-width-expand">
-                <h3 class="uk-card-title uk-margin-remove-bottom">{{currentUser.name}} {{currentUser.lastName}}</h3>
-                <p class="uk-text-meta uk-margin-remove-top">{{currentUser.email}}</p>
-                <p class="uk-text-meta uk-margin-remove-top">{{currentUser.phone}}</p>
+                <h3 class="uk-card-title uk-margin-remove-bottom uk-align-left">{{user.name}} {{user.lastName}}
+                    {{#ifCond user._id '==' currentUser._id}}
+                        <a href="/users/edit/{{../currentUser._id}}" class="uk-align-right uk-margin-remove-top uk-margin-remove-bottom"><i class="fas fa-pencil-alt"></i></a>
+                    {{/ifCond}}
+                </h3>
+                <p class="uk-text-meta uk-margin-remove-top uk-margin-remove-bottom uk-align-left">{{user.email}}</p>
+                <p class="uk-text-meta uk-margin-remove-top uk-align-left">{{user.phone}}</p>
             </div>
         </div>
     </div>
     <div class="uk-card-body">
-        <p>{{currentUser.bio}}</p>
+        <p>{{user.bio}}</p>
     </div>
     <div class="uk-card-footer">
         <div class="uk-grid-small uk-flex-middle uk-flex-around" uk-grid>
-            {{#if currentUser.socialNetworks.facebook}}
-                <a href="{{currentUser.socialNetworks.facebook}}" class="link"><i class="fab fa-facebook-square"></i></a>
+            {{#if user.socialNetworks.facebook}}
+                <a href="{{user.socialNetworks.facebook}}" class="link"><i class="fab fa-facebook-square"></i></a>
             {{/if}}
-            {{#if currentUser.socialNetworks.twitter}}
-                <a href="{{currentUser.socialNetworks.twitter}}" class="link"><i class="fab fa-twitter-square"></i></a>
+            {{#if user.socialNetworks.twitter}}
+                <a href="{{user.socialNetworks.twitter}}" class="link"><i class="fab fa-twitter-square"></i></a>
             {{/if}}
-            {{#if currentUser.socialNetworks.instagram}}
-                <a href="{{currentUser.socialNetworks.instagram}}" class="link"><i class="fab fa-instagram"></i></a>
+            {{#if user.socialNetworks.instagram}}
+                <a href="{{user.socialNetworks.instagram}}" class="link"><i class="fab fa-instagram"></i></a>
             {{/if}}
-            {{#if currentUser.socialNetworks.linkedin}}
-                <a href="{{currentUser.socialNetworks.linkedin}}" class="link"><i class="fab fa-linkedin"></i></a>
+            {{#if user.socialNetworks.linkedin}}
+                <a href="{{user.socialNetworks.linkedin}}" class="link"><i class="fab fa-linkedin"></i></a>
             {{/if}}
-            {{#if currentUser.socialNetworks.github}}
-                <a href="{{currentUser.socialNetworks.github}}" class="link"><i class="fab fa-github"></i></a>
+            {{#if user.socialNetworks.github}}
+                <a href="{{user.socialNetworks.github}}" class="link"><i class="fab fa-github"></i></a>
             {{/if}}
         </div>
     </div>
