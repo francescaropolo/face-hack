@@ -14,7 +14,7 @@ require('hbs');
 
 // Facehack requires
 require('./helpers/handlebars');
-const locals = require('./middlewares/locals');
+// const locals = require('./middlewares/locals');
 const authMiddlewares = require('./middlewares/auth');
 
 mongoose.connect('mongodb://localhost/facehack');
@@ -59,7 +59,11 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(locals.localCurrentUser);
+// app.use(locals.localCurrentUser);
+app.use((req, res, next) => {
+    app.locals.currentUser = req.session.currentUser;
+    next();
+});
 
 app.use('/', index);
 app.use('/users', authMiddlewares.requireUser, users);
