@@ -5,10 +5,10 @@ const router = express.Router();
 const ObjectId = require('mongodb').ObjectID;
 const Job = require('../models/job');
 
-/* GET jobs listing only logged user jobs */
+// GET jobs listing only logged user jobs
 router.get('/', (req, res, next) => {
     const oid = req.session.currentUser._id;
-    Job.find(({'owner': ObjectId(oid)}))
+    Job.find({'owner': ObjectId(oid)})
         .populate('owner')
         .then((jobs) => {
             res.render('jobs/my-jobs', { jobs });
@@ -18,10 +18,12 @@ router.get('/', (req, res, next) => {
         });
 });
 
+// GET rendering create view
 router.get('/create', (req, res, next) => {
     res.render('jobs/create');
 });
 
+// POST Creating on DB new JOB
 router.post('/create', (req, res, next) => {
     const { title, company, type, description, salary, journeyType, vacancies } = req.body;
     const owner = req.session.currentUser._id;
@@ -34,6 +36,7 @@ router.post('/create', (req, res, next) => {
         });
 });
 
+// GET rendering by job id a single job
 router.get('/:id', (req, res, next) => {
     const { id } = req.params;
     Job.findById(id)
@@ -45,6 +48,7 @@ router.get('/:id', (req, res, next) => {
         });
 });
 
+// GET rendering edit view to edit single job
 router.get('/:id/edit', (req, res, next) => {
     const { id } = req.params;
     Job.findById(id)
@@ -56,9 +60,11 @@ router.get('/:id/edit', (req, res, next) => {
         });
 });
 
+// POST Pushing user id on applicants inside Job Model
 router.post('/:id/apply', (req, res, next) => {
     const { id } = req.params;
     const userId = req.session.currentUser._id;
+    // Checking if user id exists
     Job.findById(id)
         .then(job => {
             if (job && !job.applicants.some(applicantId => {
@@ -75,6 +81,7 @@ router.post('/:id/apply', (req, res, next) => {
         });
 });
 
+// POST Updating job by id on DB
 router.post('/:id', (req, res, next) => {
     const { id } = req.params;
     const { title, company, type, description, salary, journeyType, vacancies } = req.body;
@@ -100,10 +107,10 @@ router.get('/:id/applicants', (req, res, next) => {
         });
 });
 
+// POST Deleting a single job on DB
 router.post('/:id/delete', (req, res, next) => {
     Job.findByIdAndRemove(req.params.id)
-        .then(data => {
-            console.log(data);
+        .then(() => {            
             res.redirect('/jobs');
         })
         .catch(error => {
