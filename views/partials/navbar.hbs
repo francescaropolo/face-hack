@@ -45,9 +45,9 @@
     <div class="uk-navbar-right">
         <ul class="uk-navbar-nav">
              {{#if currentUser}}
-                <li class="uk-navbar-item uk-hidden-small"><div>Logged: {{currentUser.email}}</div></li>
+                <li class="uk-navbar-item uk-hidden-small" id="logged"><div>Logged: {{currentUser.email}}</div></li>
                 <li class="uk-navbar-item uk-hidden-small">
-                    <a href="#">Menu</a>
+                    <a href="#" id="menu-navbar">Menu</a>
                     <div class="uk-navbar-dropdown">
                         <ul class="uk-nav uk-navbar-dropdown-nav">
                             <li class="uk-nav-header">Menu</li>

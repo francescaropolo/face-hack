@@ -22,6 +22,19 @@ body {
   margin: 0 50px;
 }
 
+#menu {
+  background-color: #428bca;
+}
+
+.uk-logo, .uk-navbar-toggle, #logged, #menu-navbar {
+  color: #fff;
+}
+
+.fab {
+  font-size: 40px;
+  color: #428bca;
+}
+
 .job-item {
   background-color: #E0E0E0;
   margin: 2px;
