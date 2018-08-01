@@ -7,11 +7,14 @@ const Job = require('../models/job');
 
 // GET jobs listing only logged user jobs
 router.get('/', (req, res, next) => {
+    const data = {
+        sessionFlash: res.locals.sessionFlash
+    };
     const oid = req.session.currentUser._id;
     Job.find({'owner': ObjectId(oid)})
         .populate('owner')
         .then((jobs) => {
-            res.render('jobs/my-jobs', { jobs });
+            res.render('jobs/my-jobs', { jobs, data });
         })
         .catch(error => {
             next(error);
@@ -29,6 +32,11 @@ router.post('/create', (req, res, next) => {
     const owner = req.session.currentUser._id;
     Job.create({ owner, title, company, type, description, salary, journeyType, vacancies })
         .then(() => {
+            req.session.sessionFlash = {
+                type: 'uk-alert-success',
+                messageTitle: 'Yay!',
+                message: 'Job created successfully!'
+            };
             res.redirect('/jobs');
         })
         .catch(error => {
@@ -41,7 +49,10 @@ router.get('/:id', (req, res, next) => {
     const { id } = req.params;
     Job.findById(id)
         .then(job => {
-            res.render('jobs/job', job);
+            const data = {
+                sessionFlash: res.locals.sessionFlash
+            };
+            res.render('jobs/job', {job, data});
         })
         .catch(error => {
             next(error);
@@ -74,6 +85,11 @@ router.post('/:id/apply', (req, res, next) => {
             }
         })
         .then(() => {
+            req.session.sessionFlash = {
+                type: 'uk-alert-success',
+                messageTitle: 'Yay!',
+                message: 'Successful application!'
+            };
             res.redirect('/');
         })
         .catch(error => {
@@ -87,6 +103,11 @@ router.post('/:id', (req, res, next) => {
     const { title, company, type, description, salary, journeyType, vacancies } = req.body;
     Job.findByIdAndUpdate(id, { title, company, type, description, salary, journeyType, vacancies })
         .then(() => {
+            req.session.sessionFlash = {
+                type: 'uk-alert-success',
+                messageTitle: 'Yay!',
+                message: 'Job updated successfully!'
+            };
             res.redirect(`/jobs/${id}`);
         })
         .catch(error => {
@@ -110,7 +131,12 @@ router.get('/:id/applicants', (req, res, next) => {
 // POST Deleting a single job on DB
 router.post('/:id/delete', (req, res, next) => {
     Job.findByIdAndRemove(req.params.id)
-        .then(() => {            
+        .then(() => {
+            req.session.sessionFlash = {
+                type: 'uk-alert-success',
+                messageTitle: 'Yay!',
+                message: 'Job deleted successfully!'
+            };
             res.redirect('/jobs');
         })
         .catch(error => {

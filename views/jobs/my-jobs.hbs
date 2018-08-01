@@ -1,3 +1,10 @@
+{{#if sessionFlash.message}}
+    <div class="{{ sessionFlash.type }}" uk-alert>
+        <a class="uk-alert-close" uk-close></a>
+        <h3>{{ sessionFlash.messageTitle }}</h3>
+        <p>{{ sessionFlash.message }}</p>
+    </div>
+{{/if}}
 <h2>My jobs</h2>
 <div class="uk-grid-small uk-flex-wrap uk-flex-top uk-flex-row uk-flex-around@m uk-flex-around@l uk-flex-around@xl" uk-grid="masonry: true">
 {{#each jobs}}

@@ -9,7 +9,7 @@ const User = require('../models/user');
 
 router.get('/signup', (req, res, next) => {
     const data = {
-        messages: req.flash('info')
+        sessionFlash: res.locals.sessionFlash
     };
     res.render('auth/signup', data);
 });
@@ -18,13 +18,21 @@ router.post('/signup', (req, res, next) => {
     const {email, password} = req.body;
     // To middleware (DRY)
     if (!email || !password) {
-        req.flash('info', 'Los campos son obligatorios');
+        req.session.sessionFlash = {
+            type: 'uk-alert-danger',
+            messageTitle: 'Error',
+            message: 'You must fill the fields'
+        };
         return res.redirect('/auth/signup');
     }
     User.findOne({email})
         .then(user => {
             if (user) {
-                req.flash('info', 'Usuario ya existente');
+                req.session.sessionFlash = {
+                    type: 'uk-alert-danger',
+                    messageTitle: 'Error',
+                    message: 'User already exists'
+                };
                 return res.redirect('/auth/signup');
             } else {
                 const salt = bcrypt.genSaltSync(saltRounds);
@@ -33,6 +41,11 @@ router.post('/signup', (req, res, next) => {
                 newUser.save()
                     .then(user => {
                         req.session.currentUser = user;
+                        req.session.sessionFlash = {
+                            type: 'uk-alert-success',
+                            messageTitle: 'Yay!',
+                            message: 'Signup successful!'
+                        };
                         res.redirect('/');
                     })
                     .catch(error => {
@@ -47,7 +60,7 @@ router.post('/signup', (req, res, next) => {
 
 router.get('/login', (req, res, next) => {
     const data = {
-        messages: req.flash('info')
+        sessionFlash: res.locals.sessionFlash
     };
     res.render('auth/login', data);
 });
@@ -55,20 +68,37 @@ router.get('/login', (req, res, next) => {
 router.post('/login', (req, res, next) => {
     const {email, password} = req.body;
     if (!email || !password) {
-        req.flash('info', 'Los campos son obligatorios');
+        req.session.sessionFlash = {
+            type: 'uk-alert-danger',
+            messageTitle: 'Error',
+            message: 'You must fill the fields'
+        };
         return res.redirect('/auth/login');
     }
     User.findOne({email})
         .then(user => {
             if (!user) {
-                req.flash('info', 'No existe el usuario');
+                req.session.sessionFlash = {
+                    type: 'uk-alert-danger',
+                    messageTitle: 'Error',
+                    message: 'User don\'t exist'
+                };
                 return res.redirect('/auth/login');
             }
             if (bcrypt.compareSync(password, user.password)) {
                 req.session.currentUser = user;
+                req.session.sessionFlash = {
+                    type: 'uk-alert-success',
+                    messageTitle: 'Yay!',
+                    message: 'Login successful!'
+                };
                 res.redirect('/');
             } else {
-                req.flash('info', 'Contraseña incorrecta');
+                req.session.sessionFlash = {
+                    type: 'uk-alert-danger',
+                    messageTitle: 'Error',
+                    message: 'Incorrect password'
+                };
                 res.redirect('/auth/login');
             }
         })
@@ -78,7 +108,12 @@ router.post('/login', (req, res, next) => {
 });
 
 router.post('/logout', (req, res, next) => {
-    delete req.session.currentUser; // Message deslogueado correctamente
+    delete req.session.currentUser;
+    req.session.sessionFlash = {
+        type: 'uk-alert-primary',
+        messageTitle: 'Bye!',
+        message: 'Logout successful'
+    };
     res.redirect('/');
 });
 

@@ -8,7 +8,7 @@ const authMiddlewares = require('../middlewares/auth');
 // GET rendeing profile
 router.get('/:id', (req, res, next) => {
     const data = {
-        messages: req.flash('info')
+        sessionFlash: res.locals.sessionFlash
     };
 
     const {id} = req.params;
@@ -35,7 +35,11 @@ router.post('/edit/:id', authMiddlewares.requireUser, (req, res, next) => {
     User.findByIdAndUpdate(id, {name, lastName, email, dateOfBirth, phone, bio, socialNetworks: {facebook, twitter, instagram, linkedin, github}})
         .then(user => {
             req.session.currentUser = user;
-            req.flash('info', 'User updated successfully!');
+            req.session.sessionFlash = {
+                type: 'uk-alert-success',
+                messageTitle: 'Yay!',
+                message: 'User updated successfully!'
+            };
             res.redirect(`/users/${id}`);
         })
         .catch(error => {
