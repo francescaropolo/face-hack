@@ -1,18 +1,36 @@
 <h2>Job detail</h2>
-<div>{{title}}</div>
-<div>{{company}}</div>
-<div>{{type}}</div>
-<div>{{description}}</div>
-<div>{{salary}}</div>
-<div>{{journeyType}}</div>
-<div>{{vacancies}}</div>
-{{#if applicants}}
-    <h3>Applicants</h3>
-    <ul>
-    {{#each applicants}}
-        <li class="container">
-            <div>{{email}}</div>
-        </li>
-    {{/each}}
-    </ul>
-{{/if}}
+<div class="uk-grid-small uk-flex-wrap uk-flex-top uk-flex-row uk-flex-around@m uk-flex-around@l uk-flex-around@xl" uk-grid="masonry: true">
+    <div class="uk-card uk-card-default uk-width-1-1@s uk-width-1-1@m uk-width-1-2@l uk-width-1-2@xl">
+        <div class="uk-card-header">
+            <div class="uk-grid-small uk-flex-middle" uk-grid>
+                <div class="uk-width-expand">
+                    <h3 class="uk-card-title uk-margin-remove-bottom">{{title}}</h3>
+                    <p class="uk-text-meta uk-margin-remove-top">{{company}}</p>
+                    <div class="uk-grid-small uk-flex-middle uk-flex-between" uk-grid>
+                        <p class="uk-text-meta uk-margin-remove-top">{{type}}</p>
+                        <p class="uk-text-meta uk-margin-remove-top">{{journeyType}}</p>
+                        <p class="uk-text-meta uk-margin-remove-top">Vacancies: {{vacancies}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="uk-card-body">
+            <p>{{description}}</p>
+        </div>
+        <div class="uk-card-footer">
+            <p>Salary: {{salary}}</p>
+        </div>
+        <div class="uk-card-footer">
+            {{#if applicants}}
+                <h3>Applicants</h3>
+                <ul class="uk-list uk-list-divider">
+                {{#each applicants}}
+                    <li>
+                        <a href="/users/{{this._id}}">{{email}}</a>
+                    </li>
+                {{/each}}
+                </ul>
+            {{/if}}
+        </div>
+    </div>
+</div>

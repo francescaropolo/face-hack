@@ -20,8 +20,8 @@
                 <li><div>Logged: {{currentUser.email}}</div></li>
                 <li class="uk-nav-header">Menu</li>
                 <li><a href="/users/{{currentUser._id}}">My profile</a></li>
-                <li><a href="/users/edit/{{currentUser._id}}">Edit profile</a></li>
-                <li><a href="/jobs/create">Create jobs</a></li>
+                {{!-- <li><a href="/users/edit/{{currentUser._id}}">Edit profile</a></li> --}}
+                <li><a href="/jobs/create">Create a job</a></li>
                 <li><a href="/jobs">My jobs</a></li>
                 <li class="uk-nav-divider"></li>
                 <li><form action="/auth/logout" method="POST"> <button type="submit" class="uk-button uk-button-default">Logout</button> </form></li>
@@ -45,15 +45,15 @@
     <div class="uk-navbar-right">
         <ul class="uk-navbar-nav">
              {{#if currentUser}}
-                <li class="uk-navbar-item uk-hidden-small"><div>Logged: {{currentUser.email}}</div></li>
+                <li class="uk-navbar-item uk-hidden-small" id="logged"><div>Logged: {{currentUser.email}}</div></li>
                 <li class="uk-navbar-item uk-hidden-small">
-                    <a href="#">Menu</a>
+                    <a href="#" id="menu-navbar">Menu</a>
                     <div class="uk-navbar-dropdown">
                         <ul class="uk-nav uk-navbar-dropdown-nav">
                             <li class="uk-nav-header">Menu</li>
                             <li><a href="/users/{{currentUser._id}}">My profile</a></li>
-                            <li><a href="/users/edit/{{currentUser._id}}">Edit profile</a></li>
-                            <li><a href="/jobs/create">Create jobs</a></li>
+                            {{!-- <li><a href="/users/edit/{{currentUser._id}}">Edit profile</a></li> --}}
+                            <li><a href="/jobs/create">Create a job</a></li>
                             <li><a href="/jobs">My jobs</a></li>
                             <li class="uk-nav-divider"></li>
                             <li><form action="/auth/logout" method="POST"> <button type="submit" class="uk-button uk-button-default">Logout</button> </form></li>

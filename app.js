@@ -23,8 +23,8 @@ mongoose.connect('mongodb://localhost/facehack');
 // Routes
 const index = require('./routes/index');
 const users = require('./routes/users');
-const auth  = require('./routes/auth');
-const jobs  = require('./routes/jobs');
+const auth = require('./routes/auth');
+const jobs = require('./routes/jobs');
 
 const app = express();
 

@@ -4,6 +4,19 @@
   margin: 0 50px;  
 }
 
+#menu {
+    background-color: $primary;
+}
+
+.uk-logo, .uk-navbar-toggle, #logged, #menu-navbar {
+    color: $secondary;
+}
+
+.fab {
+    font-size: 40px;
+    color: $primary;
+}
+
 .job-item {
   background-color:$jobbox;  
   margin: 2px;

@@ -1,32 +1,57 @@
 <h2>Create a new job</h2>
-
-<form action="/jobs/create" method="post" class="uk-form-stacked">
-    <div class="uk-margin">
-        <input type="text" placeholder="Title" name="title" class="uk-input uk-form-blank uk-form-width-medium" required>
-        <input type="text" placeholder="Company" name="company" class="uk-input uk-form-blank uk-form-width-medium" required>
-        <div class="uk-margin">
-            <div uk-form-custom="target: true">
-                <select name="type">
-                    <option value="webdev">Web development</option>
-                    <option value="ux-ui">UX/UI design</option>
-                </select>
-                <span></span>
-            </div>
+<form action="/jobs/create" method="post" class="uk-grid-small" uk-grid>
+    <div class="uk-width-1-1@s uk-width-1-2@m uk-width-1-5@l uk-width-1-7@xl">
+        <label class="uk-form-label" for="form-stacked-text">Title:</label>
+        <div class="uk-form-controls">
+            <input id="form-stacked-text" class="uk-input uk-form-width-medium" type="text" name="title" value="">
         </div>
-        <input type="text" placeholder="Description" name="description" class="uk-input uk-form-blank uk-form-width-medium" required>
-        <input type="number" placeholder="Salary" name="salary" class="uk-input uk-form-blank uk-form-width-medium" required>
-        <div class="uk-margin">
-            <div uk-form-custom="target: true">
-                <select name="journeyType">
-                    <option value="part-time">Part-time</option>
-                    <option value="full-time">Full-time</option>
-                </select>
-                <span></span>
-            </div>
-        </div>
-        <input type="number" placeholder="Vacancies" name="vacancies" class="uk-input uk-form-blank uk-form-width-medium" required>
     </div>
-    <div class="field">
-        <button class="uk-button uk-button-primary" type="submit">Create</button>
+
+    <div class="uk-width-1-1@s uk-width-1-2@m uk-width-1-5@l uk-width-1-7@xl">
+        <label class="uk-form-label" for="form-stacked-text">Company:</label>
+        <div class="uk-form-controls">
+            <input id="form-stacked-text" class="uk-input uk-form-width-medium" type="text" name="company" value="">
+        </div>
+    </div>
+
+    <div class="uk-width-1-1@s uk-width-1-2@m uk-width-1-5@l uk-width-1-7@xl">
+        <label class="uk-form-label" for="form-stacked-text">Type:</label>
+        <select name="type">
+            <option value="webdev">Web development</option>
+            <option value="ux-ui">UX/UI design</option>
+        </select>
+    </div>
+
+    <div class="uk-width-1-1@s uk-width-1-2@m uk-width-1-5@l uk-width-1-7@xl">
+        <label class="uk-form-label" for="form-stacked-text">Description:</label>
+        <div class="uk-form-controls">
+            <input id="form-stacked-text" class="uk-input uk-form-width-medium" type="text" name="description" value="">
+        </div>
+    </div>
+
+    <div class="uk-width-1-1@s uk-width-1-2@m uk-width-1-5@l uk-width-1-7@xl">
+        <label class="uk-form-label" for="form-stacked-text">Salary:</label>
+        <div class="uk-form-controls">
+            <input id="form-stacked-text" class="uk-input uk-form-width-medium" type="number" name="salary" value="">
+        </div>
+    </div>
+    
+    <div class="uk-width-1-1@s uk-width-1-2@m uk-width-1-5@l uk-width-1-7@xl">
+        <label class="uk-form-label" for="form-stacked-text">Journey type:</label>
+        <select name="journeyType">
+            <option value="part-time">Part-time</option>
+            <option value="full-time">Full-time</option>
+        </select>
+    </div>
+
+    <div class="uk-width-1-1@s uk-width-1-2@m uk-width-1-5@l uk-width-1-7@xl">
+        <label class="uk-form-label" for="form-stacked-text">Vacancies:</label>
+        <div class="uk-form-controls">
+            <input id="form-stacked-text" class="uk-input uk-form-width-medium" type="number" name="vacancies" value="">
+        </div>
+    </div>
+
+    <div class="uk-width-1-1@s uk-width-1-2@m uk-width-1-5@l uk-width-1-7@xl uk-margin-top uk-margin-bottom" uk-margin>
+        <button class="uk-button uk-button-default uk-button-primary" type="submit">Create</button>
     </div>
 </form>
