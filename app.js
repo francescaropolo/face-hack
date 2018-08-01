@@ -11,7 +11,7 @@ const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 const flash = require('connect-flash');
 
-require('./helpers/handlebarsH');
+require('./helpers/handlebars');
 const authMiddlewares = require('./middlewares/auth');
 
 mongoose.connect('mongodb://localhost/facehack');
