@@ -1,3 +1,5 @@
+'use strict';
+
 const requireUser = (req, res, next) => {
     if (req.session.currentUser) {
         next();

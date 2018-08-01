@@ -1,3 +1,5 @@
+'use strict';
+
 const createError = require('http-errors');
 const express = require('express');
 const hbs = require('hbs');
@@ -25,7 +27,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
 // Separate to HBS folder with diferent files
-hbs.registerPartials(__dirname + '/views/partials');
+hbs.registerPartials(path.join(__dirname, '/views/partials'));
 // Helper to compare strings on views using {{#ifEquals arg1 arg2}} {{/ifEquals}}
 hbs.registerHelper('ifEquals', (arg1, arg2, options) => {
     return (arg1 === arg2) ? options.fn(this) : options.inverse(this);
@@ -52,7 +54,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// To middleware
+// @TODO To middleware
 app.use((req, res, next) => {
     app.locals.currentUser = req.session.currentUser;
     next();

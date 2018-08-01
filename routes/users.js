@@ -1,15 +1,9 @@
+'use strict';
+
 const express = require('express');
 const router = express.Router();
 const User = require('../models/user');
 const authMiddlewares = require('../middlewares/auth');
-
-/* GET users listing. */
-// router.get('/', (req, res, next) => {
-//     const data = {
-//         messages: req.flash('info')
-//     };
-//     res.render('users/user', data);
-// });
 
 router.get('/:id', (req, res, next) => {
     const data = {
