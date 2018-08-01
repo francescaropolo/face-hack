@@ -1,5 +1,8 @@
 const hbs = require('hbs');
 
+// Global route for hbs partials
+hbs.registerPartials(__dirname + '/../views/partials');
+
 // Helper to compare strings on views using {{#ifEquals arg1 arg2}} {{/ifEquals}}
 hbs.registerHelper('ifEquals', (arg1, arg2, options) => {
   return (arg1 === arg2) ? options.fn(this) : options.inverse(this);

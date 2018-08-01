@@ -1,8 +1,8 @@
 'use strict';
 
+// Node Modules
 const createError = require('http-errors');
 const express = require('express');
-const hbs = require('hbs');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
@@ -10,25 +10,26 @@ const mongoose = require('mongoose');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 const flash = require('connect-flash');
+require('hbs');
 
+// Facehack requires
 require('./helpers/handlebars');
+const locals = require('./middlewares/locals');
 const authMiddlewares = require('./middlewares/auth');
 
 mongoose.connect('mongodb://localhost/facehack');
 
-const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
-const authRouter = require('./routes/auth');
-const jobsRouter = require('./routes/jobs');
+// Routes
+const index = require('./routes/index');
+const users = require('./routes/users');
+const auth  = require('./routes/auth');
+const jobs  = require('./routes/jobs');
 
 const app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
-
-// Separate to HBS folder with diferent files
-hbs.registerPartials(__dirname + '/views/partials');
 
 app.use(session({
     store: new MongoStore({
@@ -43,6 +44,7 @@ app.use(session({
     }
 }));
 
+// Global notification system
 app.use(flash());
 
 app.use(logger('dev'));
@@ -51,16 +53,12 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// @TODO To middleware
-app.use((req, res, next) => {
-    app.locals.currentUser = req.session.currentUser;
-    next();
-});
+app.use(locals.localCurrentUser);
 
-app.use('/', indexRouter);
-app.use('/users', authMiddlewares.requireUser, usersRouter);
-app.use('/auth', authRouter);
-app.use('/jobs', authMiddlewares.requireUser, jobsRouter);
+app.use('/', index);
+app.use('/users', authMiddlewares.requireUser, users);
+app.use('/auth', auth);
+app.use('/jobs', authMiddlewares.requireUser, jobs);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
