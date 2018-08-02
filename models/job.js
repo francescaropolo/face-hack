@@ -13,8 +13,8 @@ const jobSchema = new Schema({
     salary: Number,
     journeyType: String,
     vacancies: Number,
-    applicants: [{ type: ObjectId, ref: 'User' }]
-    // location: {type: {type: String}, coordinates: [Number]},
+    applicants: [{ type: ObjectId, ref: 'User' }],
+    location: {type: {type: String}, coordinates: [Number]}
 }, {
     timestamps: {
         createdAt: 'created_at',

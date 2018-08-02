@@ -17,6 +17,27 @@
         <div class="uk-card-body">
             <p>{{description}}</p>
         </div>
+        {{#if location}}
+            <div class="uk-card-body">
+                <div id='map' style='height: 300px;'></div>
+                <input type="hidden" id="coord" value="{{location.coordinates}}">
+                <script>
+                    const loc = document.getElementById('coord').value;
+                    const locArray = loc.split(',');
+                    mapboxgl.accessToken = 'pk.eyJ1Ijoibml4aWVzY3JlYW0iLCJhIjoiY2prMHo4MWF0MGI5OTNxczE1bWo5eHN5ZSJ9.fopBwvYRECh6vF6e6v7rRg';
+                    const map = new mapboxgl.Map({
+                        container: 'map',
+                        style: 'mapbox://styles/mapbox/streets-v9',
+                        center: [locArray[0], locArray[1]],
+                        zoom: 13
+                    });
+
+                    const marker = new mapboxgl.Marker()
+                        .setLngLat([locArray[0], locArray[1]])
+                        .addTo(map);
+                </script>
+            </div>
+        {{/if}}
         <div class="uk-card-footer">
             <p>Salary: {{salary}}</p>
         </div>
