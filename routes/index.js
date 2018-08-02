@@ -12,8 +12,7 @@ router.get('/', (req, res, next) => {
     const oid = req.session.currentUser._id;
     const jobTime1 = ObjectId(oid).getTimestamp(); // Getting date of creation
     const jobTime2 = jobTime1.toString(); // Parsing raw mongo date to string 
-    const jobTime = moment(jobTime2).format('Do MMMM YYYY'); // Parsing using moment.js to new date format
-    console.log(jobTime);
+    const jobTime = moment(jobTime2).format('Do MMMM YYYY'); // Parsing using moment.js to new date format    
     Job.find()
         .populate('owner')
         .then((jobs) => {
