@@ -28,9 +28,10 @@ router.get('/create', (req, res, next) => {
 
 // POST Creating on DB new JOB
 router.post('/create', (req, res, next) => {
-    const { title, company, type, description, salary, journeyType, vacancies } = req.body;
+    const { title, company, locationLong, locationLat, type, description, salary, journeyType, vacancies } = req.body;
+    const location = {type: 'Point', coordinates: [locationLong, locationLat]};
     const owner = req.session.currentUser._id;
-    Job.create({ owner, title, company, type, description, salary, journeyType, vacancies })
+    Job.create({ owner, title, company, type, description, salary, journeyType, vacancies, location })
         .then(() => {
             req.session.sessionFlash = {
                 type: 'uk-alert-success',
@@ -100,8 +101,9 @@ router.post('/:id/apply', (req, res, next) => {
 // POST Updating job by id on DB
 router.post('/:id', (req, res, next) => {
     const { id } = req.params;
-    const { title, company, type, description, salary, journeyType, vacancies } = req.body;
-    Job.findByIdAndUpdate(id, { title, company, type, description, salary, journeyType, vacancies })
+    const { title, company, locationLong, locationLat, type, description, salary, journeyType, vacancies } = req.body;
+    const location = {type: 'Point', coordinates: [locationLong, locationLat]};
+    Job.findByIdAndUpdate(id, { title, company, type, description, salary, journeyType, vacancies, location })
         .then(() => {
             req.session.sessionFlash = {
                 type: 'uk-alert-success',
