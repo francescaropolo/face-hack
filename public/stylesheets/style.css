@@ -26,8 +26,8 @@ body {
   background-color: #428bca;
 }
 
-.uk-logo, .uk-navbar-toggle, #logged, #menu-navbar {
-  color: #fff;
+.uk-logo, .uk-navbar-toggle, #logged, #menu-navbar, .navbar-link {
+  color: #fff !important;
 }
 
 .fab {

@@ -8,8 +8,8 @@
     background-color: $primary;
 }
 
-.uk-logo, .uk-navbar-toggle, #logged, #menu-navbar {
-    color: $secondary;
+.uk-logo, .uk-navbar-toggle, #logged, #menu-navbar, .navbar-link {
+    color: $secondary !important;
 }
 
 .fab {
