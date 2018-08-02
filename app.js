@@ -1,6 +1,7 @@
 'use strict';
 
 // Node Modules
+require("dotenv").config();
 const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
@@ -17,7 +18,7 @@ require('./helpers/handlebars');
 // const locals = require('./middlewares/locals');
 const authMiddlewares = require('./middlewares/auth');
 
-mongoose.connect('mongodb://localhost/facehack');
+mongoose.connect(process.env.MONGODB_URI);
 
 // Routes
 const index = require('./routes/index');
