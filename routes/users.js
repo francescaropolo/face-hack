@@ -32,7 +32,7 @@ router.get('/edit/:id', authMiddlewares.requireUser, (req, res, next) => {
 router.post('/edit/:id', authMiddlewares.requireUser, upload.single('picture'), (req, res, next) => {
     const {id} = req.params;
     const {name, lastName, email, dateOfBirth, phone, bio, facebook, twitter, instagram, linkedin, github} = req.body;    
-    const picturePath = req.file ? req.file.path : undefined;    
+    const picturePath = req.file ? req.file.path.substr(6) : undefined;        
         
     User.findByIdAndUpdate(id, {name, lastName, email, dateOfBirth, phone, bio, socialNetworks: {facebook, twitter, instagram, linkedin, github}, picturePath})
         .then(user => {

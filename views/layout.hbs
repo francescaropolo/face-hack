@@ -4,28 +4,13 @@
     <title>{{title}}</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Maven+Pro" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">        
     <link rel="stylesheet" href="/uikit/css/uikit.min.css"/>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-    <script>
-      Dropzone.options.dropImg = {
-          init: () => {
-            this.on("success", (file) => {
-            console.log("success done");
-            });
-            this.on("addedfile", (file) => {
-            console.log("added");
-            });
-          },
-          dictDefaultMessage: "Drop your image file here"
-      };
-    </script>
+    <link rel='stylesheet' href='/stylesheets/style.css'/>
   </head>
   <body>
     {{>navbar}}
-    {{{body}}}
-    <script src="https://rawgit.com/enyo/dropzone/master/dist/dropzone.js"></script>
+    {{{body}}}    
     <script src="/uikit/js/uikit.min.js"></script>
     <script src="/uikit/js/uikit-icons.min.js"></script>
   </body>
