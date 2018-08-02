@@ -10,10 +10,10 @@ router.get('/', (req, res, next) => {
     const data = {
         sessionFlash: res.locals.sessionFlash
     };
-    const oid = req.session.currentUser._id;
+    const oid = req.session.currentUser._id;     
     Job.find({'owner': ObjectId(oid)})
         .populate('owner')
-        .then((jobs) => {
+        .then((jobs) => {            
             res.render('jobs/my-jobs', { jobs, data });
         })
         .catch(error => {
