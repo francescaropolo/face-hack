@@ -17,7 +17,7 @@
         <div class="uk-card-body">
             <p>{{description}}</p>
         </div>
-        {{#if location}}
+        {{#if location.coordinates}}
             <div class="uk-card-body">
                 <div id='map' style='height: 300px;'></div>
                 <input type="hidden" id="coord" value="{{location.coordinates}}">

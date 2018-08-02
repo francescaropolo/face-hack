@@ -24,7 +24,7 @@
         <div class="uk-card-body">
             <p>{{job.description}}</p>
         </div>
-        {{#if job.location}}
+        {{#if job.location.coordinates}}
             <div class="uk-card-body">
                 <div id='map' style='height: 300px;'></div>
                 <input type="hidden" id="coord" value="{{job.location.coordinates}}">
