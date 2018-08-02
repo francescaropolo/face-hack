@@ -1,17 +1,21 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>{{title}}</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">        
-    <link rel="stylesheet" href="/uikit/css/uikit.min.css"/>
-    <link rel='stylesheet' href='/stylesheets/style.css'/>
-  </head>
-  <body>
-    {{>navbar}}
-    {{{body}}}    
-    <script src="/uikit/js/uikit.min.js"></script>
-    <script src="/uikit/js/uikit-icons.min.js"></script>
-  </body>
+    <head>
+        <title>{{title}}</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="/fontawesome/css/all.css">        
+        <link rel="stylesheet" href="/uikit/css/uikit.min.css"/>
+        <link rel='stylesheet' href='/stylesheets/style.css'/>
+        <link href='/mapbox/css/mapbox-gl.css' rel='stylesheet'/>
+        <script src='/mapbox/js/mapbox-gl.js'></script>        
+    </head>
+    <body>
+        <script src='/mapbox/js/mapbox-gl-geocoder.min.js'></script>
+        <link rel='stylesheet' href='/mapbox/css/mapbox-gl-geocoder.css' type='text/css' />
+        {{>navbar}}
+        {{{body}}}    
+        <script src="/uikit/js/uikit.min.js"></script>
+        <script src="/uikit/js/uikit-icons.min.js"></script>
+    </body>
 </html>

@@ -15,6 +15,60 @@
     </div>
 
     <div class="uk-width-1-1@s uk-width-1-2@m uk-width-1-5@l uk-width-1-7@xl">
+        <div id='map' style='height: 300px;'></div>
+        <script>
+        function success(pos) {
+            const crd = pos.coords;
+            mapboxgl.accessToken = 'pk.eyJ1Ijoibml4aWVzY3JlYW0iLCJhIjoiY2prMHo4MWF0MGI5OTNxczE1bWo5eHN5ZSJ9.fopBwvYRECh6vF6e6v7rRg';
+            const map = new mapboxgl.Map({
+                container: 'map',
+                style: 'mapbox://styles/mapbox/streets-v9',
+                center: [crd.longitude, crd.latitude],
+                zoom: 13
+            });
+            const geocoder = new MapboxGeocoder({
+                accessToken: mapboxgl.accessToken
+            });
+
+            map.addControl(geocoder);
+
+            map.on('load', () => {
+                map.addSource('single-point', {
+                    "type": "geojson",
+                    "data": {
+                        "type": "FeatureCollection",
+                        "features": []
+                    }
+                });
+
+                map.addLayer({
+                    "id": "point",
+                    "source": "single-point",
+                    "type": "circle",
+                    "paint": {
+                        "circle-radius": 5,
+                        "circle-color": "#007cbf"
+                    }
+                });
+
+                geocoder.on('result', function(ev) {
+                    const marker = new mapboxgl.Marker()
+                        .setLngLat([ev.result.geometry.coordinates[0], ev.result.geometry.coordinates[1]])
+                        .addTo(map);
+                    document.getElementById('coord-long').value = ev.result.geometry.coordinates[0];
+                    document.getElementById('coord-lat').value = ev.result.geometry.coordinates[1];
+                });
+            });
+        }
+
+
+        navigator.geolocation.getCurrentPosition(success);
+        </script>
+        <input type="hidden" name="locationLong" id="coord-long">
+        <input type="hidden" name="locationLat" id="coord-lat">
+    </div>
+
+    <div class="uk-width-1-1@s uk-width-1-2@m uk-width-1-5@l uk-width-1-7@xl">
         <label class="uk-form-label" for="form-stacked-text">Type:</label>
         <select name="type">
             <option value="webdev">Web development</option>

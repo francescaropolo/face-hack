@@ -26,8 +26,13 @@ body {
   background-color: #428bca;
 }
 
-.uk-logo, .uk-navbar-toggle, #logged, #menu-navbar {
-  color: #fff;
+.uk-logo, .uk-navbar-toggle, #logged, #menu-navbar, .navbar-link {
+  color: #fff !important;
+}
+
+#map {
+  text-align: left;
+  margin: 0 5%;
 }
 
 .fab {

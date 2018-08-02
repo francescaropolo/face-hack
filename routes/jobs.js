@@ -4,6 +4,8 @@ const express = require('express');
 const router = express.Router();
 const ObjectId = require('mongodb').ObjectID;
 const Job = require('../models/job');
+const moment = require('moment');
+moment().format('Do MMMM YYYY')
 
 // GET jobs listing only logged user jobs
 router.get('/', (req, res, next) => {
@@ -11,10 +13,13 @@ router.get('/', (req, res, next) => {
         sessionFlash: res.locals.sessionFlash
     };
     const oid = req.session.currentUser._id;
+    const jobTime1 = ObjectId(oid).getTimestamp(); // Getting date of creation
+    const jobTime2 = jobTime1.toString(); // Parsing raw mongo date to string 
+    const jobTime = moment(jobTime2).format('Do MMMM YYYY'); // Parsing using moment.js to new date format     
     Job.find({'owner': ObjectId(oid)})
         .populate('owner')
-        .then((jobs) => {
-            res.render('jobs/my-jobs', { jobs, data });
+        .then((jobs) => {            
+            res.render('jobs/my-jobs', { jobs, data, jobTime });
         })
         .catch(error => {
             next(error);
@@ -28,9 +33,10 @@ router.get('/create', (req, res, next) => {
 
 // POST Creating on DB new JOB
 router.post('/create', (req, res, next) => {
-    const { title, company, type, description, salary, journeyType, vacancies } = req.body;
+    const { title, company, locationLong, locationLat, type, description, salary, journeyType, vacancies } = req.body;
+    const location = {type: 'Point', coordinates: [locationLong, locationLat]};
     const owner = req.session.currentUser._id;
-    Job.create({ owner, title, company, type, description, salary, journeyType, vacancies })
+    Job.create({ owner, title, company, type, description, salary, journeyType, vacancies, location })
         .then(() => {
             req.session.sessionFlash = {
                 type: 'uk-alert-success',
@@ -100,8 +106,9 @@ router.post('/:id/apply', (req, res, next) => {
 // POST Updating job by id on DB
 router.post('/:id', (req, res, next) => {
     const { id } = req.params;
-    const { title, company, type, description, salary, journeyType, vacancies } = req.body;
-    Job.findByIdAndUpdate(id, { title, company, type, description, salary, journeyType, vacancies })
+    const { title, company, locationLong, locationLat, type, description, salary, journeyType, vacancies } = req.body;
+    const location = {type: 'Point', coordinates: [locationLong, locationLat]};
+    Job.findByIdAndUpdate(id, { title, company, type, description, salary, journeyType, vacancies, location })
         .then(() => {
             req.session.sessionFlash = {
                 type: 'uk-alert-success',
