@@ -25,9 +25,21 @@
                 <h3>Applicants</h3>
                 <ul class="uk-list uk-list-divider">
                 {{#each applicants}}
+                    {{#if name}}
                     <li>
+                        {{#if picturePath}}
+                            <img src="{{picturePath}}" alt="profile_image" class="uk-border-circle" width="35" height="35">
+                        {{/if}}
+                        <a href="/users/{{this._id}}">{{name}} {{lastName}}</a>
+                    </li>
+                    {{else}}
+                    <li>
+                        {{#if picturePath}}
+                            <img src="{{picturePath}}" alt="profile_image" class="uk-border-circle" width="35" height="35">
+                        {{/if}}
                         <a href="/users/{{this._id}}">{{email}}</a>
                     </li>
+                    {{/if}}
                 {{/each}}
                 </ul>
             {{/if}}
