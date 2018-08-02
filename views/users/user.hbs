@@ -8,11 +8,13 @@
 <div class="uk-card uk-card-default uk-width-1-2@m uk-width-1-1@l">
     <div class="uk-card-header">
         <div class="uk-grid-small uk-flex-middle" uk-grid>
-            <div class="uk-width-auto">
-                <img class="uk-border-circle" width="40" height="40" src="images/avatar.jpg">
-            </div>
+            {{#if user.picturePath}}
+                <div class="uk-width-auto">
+                    <img class="uk-border-circle" width="40" height="40" src="{{user.picturePath}}">
+                </div>
+            {{/if}}
             <div class="uk-width-expand">
-                <h3 class="uk-card-title uk-margin-remove-bottom uk-align-left">{{user.name}} {{user.lastName}}
+                <h3 class="uk-card-title uk-margin-remove-bottom">{{user.name}} {{user.lastName}}
                     {{#ifCond user._id '==' currentUser._id}}
                         <a href="/users/edit/{{../currentUser._id}}" class="uk-align-right uk-margin-remove-top uk-margin-remove-bottom"><i class="fas fa-pencil-alt"></i></a>
                     {{/ifCond}}
