@@ -42,3 +42,13 @@
   margin-left: auto;
   margin-right: auto;
 }
+
+#tm-footer {
+  background-color: $primary;
+  color: $secondary;
+  padding: 2vh;
+
+  a {
+    color: $secondary;
+  }
+}

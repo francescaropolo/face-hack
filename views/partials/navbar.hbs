@@ -18,7 +18,7 @@
             {{#if currentUser}}
             <ul class="uk-nav">
                 <li><div>Logged: {{currentUser.email}}</div></li>
-                <li class="uk-nav-header">Menu</li>
+                <li><a href="/">Home</a></li>
                 <li><a href="/users/{{currentUser._id}}">My profile</a></li>
                 <li><a href="/users/edit/{{currentUser._id}}">Edit profile</a></li>
                 <li><a href="/jobs/create">Create a job</a></li>
@@ -28,7 +28,7 @@
                 </ul>
             {{else}}
                 <ul class="uk-nav">
-                    <li class="uk-nav-header">Menu</li>
+                    <li><a href="/">Home</a></li>
                     <li> <a href="/auth/signup">Sign up</a> </li>
                     <li> <a href="/auth/login">Login</a> </li>
                 </ul>
@@ -50,7 +50,7 @@
                     <a href="#" id="menu-navbar">Menu</a>
                     <div class="uk-navbar-dropdown">
                         <ul class="uk-nav uk-navbar-dropdown-nav">
-                            <li class="uk-nav-header">Menu</li>
+                            <li><a href="/">Home</a></li>
                             <li><a href="/users/{{currentUser._id}}">My profile</a></li>
                             <li><a href="/users/edit/{{currentUser._id}}">Edit profile</a></li>
                             <li><a href="/jobs/create">Create a job</a></li>
