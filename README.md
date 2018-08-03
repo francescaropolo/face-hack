@@ -120,10 +120,10 @@ The url to your repository and to your deployed project
 
 [Repository Link!!](https://github.com/nixiescream/face-hack)
 
-[Deploy Link](http://heroku.com)
+[Deploy Link](https://facehack.herokuapp.com/)
 
 ### Slides.com
 
 The url to your presentation slides
 
-[Slides Link](http://slides.com)
+[Slides Link](https://slides.com/nuriabalaguer/facehack/live#/)
