@@ -61,4 +61,13 @@ body {
   margin-right: auto;
 }
 
+#tm-footer {
+  background-color: #428bca;
+  color: #fff;
+  padding: 2vh;
+}
+#tm-footer a {
+  color: #fff;
+}
+
 /*# sourceMappingURL=style.css.map */
