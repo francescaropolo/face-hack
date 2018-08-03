@@ -3,18 +3,18 @@
 const mongoose = require('mongoose');
 const Job = require('../models/job');
 
-const idCheck = (req, res, next) => {
+const idCheckJob = (req, res, next) => {
     const { id } = req.params;
     const regExp = RegExp('^[a-fA-F0-9]{24}$');
     if (!mongoose.Types.ObjectId.isValid(id) || !regExp.test(id)) {
-        return res.sendStatus(400);
+        res.render('error', {message: 'This is not the webpage you are looking for... :(', error: {status: '404'}});
     } else {
         Job.findById(id)
             .then(job => {
                 if (job !== null) {
                     next();
                 } else {
-                    return res.sendStatus(400);
+                    res.render('error', {message: 'This is not the webpage you are looking for... :(', error: {status: '404'}});
                 }
             })
             .catch(error => {
@@ -23,4 +23,4 @@ const idCheck = (req, res, next) => {
     }
 };
 
-module.exports = idCheck;
+module.exports = idCheckJob;
