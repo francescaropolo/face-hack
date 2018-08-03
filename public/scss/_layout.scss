@@ -47,6 +47,10 @@
   background-color: $primary;
   color: $secondary;
   padding: 2vh;
+  bottom: 0;
+  width: 100%;
+  // position: absolute;
+  flex-shrink: 0;
 
   a {
     color: $secondary;
@@ -61,4 +65,10 @@
 .logo-facehack {
   padding: 1vh;
   color: $secondary;
+}
+
+.general-forms {
+  display: flex;
+  flex-direction: column;
+  align-items: center;  
 }
