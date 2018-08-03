@@ -18,13 +18,12 @@ body {
 h2 {
   font-size: 1.3em;
   font-weight: 600;
-  padding: 2vh;
+  padding-top: 1vh;
 }
 
 h3 {
   font-size: 1.1em;
   font-weight: 600;
-  padding: 1vh;
 }
 
 .uk-card h3 {
@@ -85,6 +84,11 @@ h3 {
 }
 #tm-footer a {
   color: #fff;
+}
+
+.itunned {
+  vertical-align: middle;
+  margin: 0 5vw;
 }
 
 /*# sourceMappingURL=style.css.map */
