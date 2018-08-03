@@ -4,6 +4,7 @@ const express = require('express');
 const router = express.Router();
 const ObjectId = require('mongodb').ObjectID;
 const Job = require('../models/job');
+const idCheck = require('../middlewares/idCheck');
 const moment = require('moment');
 moment().format('Do MMMM YYYY');
 
@@ -52,7 +53,7 @@ router.post('/create', (req, res, next) => {
 });
 
 // GET rendering by job id a single job
-router.get('/:id', (req, res, next) => {
+router.get('/:id', idCheck, (req, res, next) => {
     const { id } = req.params;
     Job.findById(id)
         .then(job => {
