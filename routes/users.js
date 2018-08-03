@@ -4,11 +4,12 @@ const express = require('express');
 const router = express.Router();
 const User = require('../models/user');
 const authMiddlewares = require('../middlewares/auth');
+const idCheck = require('../middlewares/idCheckUser');
 const multer = require('multer');
 const upload = multer({dest: './public/uploads'}); // for parsing multipart/form-data
 
 // GET rendeing profile
-router.get('/:id', (req, res, next) => {
+router.get('/:id', idCheck, (req, res, next) => {
     const data = {
         sessionFlash: res.locals.sessionFlash
     };
@@ -24,7 +25,7 @@ router.get('/:id', (req, res, next) => {
 });
 
 // GET rendering edit form
-router.get('/edit/:id', authMiddlewares.requireUser, (req, res, next) => {
+router.get('/edit/:id', authMiddlewares.requireUser, idCheck, (req, res, next) => {
     res.render('users/edit');
 });
 

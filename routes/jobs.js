@@ -4,7 +4,7 @@ const express = require('express');
 const router = express.Router();
 const ObjectId = require('mongodb').ObjectID;
 const Job = require('../models/job');
-const idCheck = require('../middlewares/idCheck');
+const idCheck = require('../middlewares/idCheckJob');
 const moment = require('moment');
 moment().format('Do MMMM YYYY');
 
@@ -68,7 +68,7 @@ router.get('/:id', idCheck, (req, res, next) => {
 });
 
 // GET rendering edit view to edit single job
-router.get('/:id/edit', (req, res, next) => {
+router.get('/:id/edit', idCheck, (req, res, next) => {
     const { id } = req.params;
     Job.findById(id)
         .then(job => {
@@ -125,7 +125,7 @@ router.post('/:id', (req, res, next) => {
 });
 
 // GET and list applicants view
-router.get('/:id/applicants', (req, res, next) => {
+router.get('/:id/applicants', idCheck, (req, res, next) => {
     const { id } = req.params;
     Job.findById(id)
         .populate('applicants')
