@@ -15,7 +15,7 @@
             <div class="uk-position-cover" uk-slideshow-parallax="opacity: 0,0,0.2; backgroundColor: #000,#000"></div>
             <div class="uk-position-center uk-position-medium uk-text-center">
                 <div uk-slideshow-parallax="scale: 1,1,0.8">
-                    <h2 uk-slideshow-parallax="x: 200,0,0">Facehack</h2>
+                    <h2 uk-slideshow-parallax="x: 200,0,0">Stay connected</h2>
                     <h5 uk-slideshow-parallax="x: 400,0,0;">Share and find all the Webdev and UX/UI jobs with your Ironhack mates</h5>
                 </div>
             </div>
@@ -44,7 +44,15 @@
         <div class="uk-card-header">
             <div class="uk-grid-small uk-flex-middle" uk-grid>
                 <div class="uk-width-expand">
-                    <h3 class="uk-card-title uk-margin-remove-bottom">{{title}}</h3>
+                    <h3 class="uk-card-title uk-margin-remove-bottom"> 
+                        {{#ifEquals type "webdev"}}
+                            <i class="fas fa-code"></i>
+                        {{/ifEquals}}
+                        {{#ifEquals type "ux-ui"}}
+                            <i class="fas fa-pencil-ruler"></i>
+                        {{/ifEquals}}
+                        {{title}}
+                    </h3>
                     <p class="uk-text-meta uk-margin-remove-top"><time datetime="{{../jobTime}}">{{../jobTime}}</time></p>
                 </div>
             </div>
