@@ -4,22 +4,23 @@ const express = require('express');
 const router = express.Router();
 const ObjectId = require('mongodb').ObjectID;
 const Job = require('../models/job');
+const idCheck = require('../middlewares/idCheckJob');
 const moment = require('moment');
-moment().format('Do MMMM YYYY')
+moment().format('Do MMMM YYYY');
 
 // GET jobs listing only logged user jobs
 router.get('/', (req, res, next) => {
     const data = {
         sessionFlash: res.locals.sessionFlash
     };
-    const oid = req.session.currentUser._id;    
+    const oid = req.session.currentUser._id;
     Job.find({'owner': ObjectId(oid)})
         .populate('owner')
-        .then((jobs) => {     
+        .then((jobs) => {
             const jid = jobs._id;
             const jobTime1 = ObjectId(jid).getTimestamp(); // Getting date of creation
-            const jobTime2 = jobTime1.toString(); // Parsing raw mongo date to string 
-            const jobTime = moment(jobTime2).format('Do MMMM YYYY'); // Parsing using moment.js to new date format            
+            const jobTime2 = jobTime1.toString(); // Parsing raw mongo date to string
+            const jobTime = moment(jobTime2).format('Do MMMM YYYY'); // Parsing using moment.js to new date format
             res.render('jobs/my-jobs', { jobs, data, jobTime });
         })
         .catch(error => {
@@ -52,7 +53,7 @@ router.post('/create', (req, res, next) => {
 });
 
 // GET rendering by job id a single job
-router.get('/:id', (req, res, next) => {
+router.get('/:id', idCheck, (req, res, next) => {
     const { id } = req.params;
     Job.findById(id)
         .then(job => {
@@ -67,7 +68,7 @@ router.get('/:id', (req, res, next) => {
 });
 
 // GET rendering edit view to edit single job
-router.get('/:id/edit', (req, res, next) => {
+router.get('/:id/edit', idCheck, (req, res, next) => {
     const { id } = req.params;
     Job.findById(id)
         .then(job => {
@@ -124,7 +125,7 @@ router.post('/:id', (req, res, next) => {
 });
 
 // GET and list applicants view
-router.get('/:id/applicants', (req, res, next) => {
+router.get('/:id/applicants', idCheck, (req, res, next) => {
     const { id } = req.params;
     Job.findById(id)
         .populate('applicants')

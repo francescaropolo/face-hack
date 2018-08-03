@@ -1,8 +1,7 @@
 <div uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky; bottom: #transparent-sticky-navbar">
 <nav class="uk-navbar uk-navbar-container uk-hidden@m" id="menu" uk-navbar>
     <div class="uk-navbar-left">
-        <a class="uk-navbar-item uk-logo" href="/">Facehack</a> 
-        {{!-- <h2>Ironhack social network to share and find jobs</h2>                 --}}
+        <a class="uk-navbar-item uk-logo" href="/"> <i class="fab fa-galactic-republic logo-facehack"></i> Facehack</a> 
     </div>    
     <div class="uk-navbar-right">
         <a class="uk-navbar-toggle" href="#" uk-toggle="target: #offcanvas-nav">
@@ -18,7 +17,7 @@
             {{#if currentUser}}
             <ul class="uk-nav">
                 <li><div>Logged: {{currentUser.email}}</div></li>
-                <li class="uk-nav-header">Menu</li>
+                <li><a href="/">Home</a></li>
                 <li><a href="/users/{{currentUser._id}}">My profile</a></li>
                 <li><a href="/users/edit/{{currentUser._id}}">Edit profile</a></li>
                 <li><a href="/jobs/create">Create a job</a></li>
@@ -28,7 +27,7 @@
                 </ul>
             {{else}}
                 <ul class="uk-nav">
-                    <li class="uk-nav-header">Menu</li>
+                    <li><a href="/">Home</a></li>
                     <li> <a href="/auth/signup">Sign up</a> </li>
                     <li> <a href="/auth/login">Login</a> </li>
                 </ul>
@@ -40,7 +39,7 @@
 <div uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky; bottom: #transparent-sticky-navbar">
 <nav class="uk-navbar uk-navbar-container uk-visible@m" id="menu" uk-navbar>
     <div class="uk-navbar-left">
-        <a class="uk-navbar-item uk-logo" href="/">Facehack</a>        
+        <a class="uk-navbar-item uk-logo" href="/"> <i class="fab fa-galactic-republic logo-facehack"></i> Facehack</a>        
     </div>
     <div class="uk-navbar-right">
         <ul class="uk-navbar-nav">
@@ -50,7 +49,7 @@
                     <a href="#" id="menu-navbar">Menu</a>
                     <div class="uk-navbar-dropdown">
                         <ul class="uk-nav uk-navbar-dropdown-nav">
-                            <li class="uk-nav-header">Menu</li>
+                            <li><a href="/">Home</a></li>
                             <li><a href="/users/{{currentUser._id}}">My profile</a></li>
                             <li><a href="/users/edit/{{currentUser._id}}">Edit profile</a></li>
                             <li><a href="/jobs/create">Create a job</a></li>

@@ -12,8 +12,24 @@ body {
 }
 
 body {
-  font-family: "Maven", sans-serif;
   text-align: center;
+}
+
+h2 {
+  font-size: 1.3em;
+  font-weight: 600;
+  padding-top: 1vh;
+}
+
+h3 {
+  font-size: 1.1em;
+  font-weight: 600;
+}
+
+.uk-card h3 {
+  font-size: 1.5rem;
+  line-height: 1.4;
+  font-weight: 400;
 }
 
 .container {
@@ -59,6 +75,25 @@ body {
   max-width: 500px;
   margin-left: auto;
   margin-right: auto;
+}
+
+#tm-footer {
+  background-color: #428bca;
+  color: #fff;
+  padding: 2vh;
+}
+#tm-footer a {
+  color: #fff;
+}
+
+.itunned {
+  vertical-align: middle;
+  margin: 0 5vw;
+}
+
+.logo-facehack {
+  padding: 1vh;
+  color: #fff;
 }
 
 /*# sourceMappingURL=style.css.map */
