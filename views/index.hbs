@@ -5,12 +5,19 @@
         <p>{{ sessionFlash.message }}</p>
     </div>
 {{/if}}
-<div class="uk-position-relative uk-visible-toggle uk-light" uk-slideshow="animation: push; min-height: 300; max-height: 500">
+<div class="uk-position-relative uk-visible-toggle uk-light" uk-slideshow="animation: push; min-height: 300; max-height: 500; autoplay: true">
 
     <ul class="uk-slideshow-items">
         <li>
             <div class="uk-position-cover uk-animation-kenburns uk-animation-reverse uk-transform-origin-center-left">
                 <img src="/assets/pics/grupoiron1.JPG" alt="" uk-cover>
+            </div>
+            <div class="uk-position-cover" uk-slideshow-parallax="opacity: 0,0,0.2; backgroundColor: #000,#000"></div>
+            <div class="uk-position-center uk-position-medium uk-text-center">
+                <div uk-slideshow-parallax="scale: 1,1,0.8">
+                    <h2 uk-slideshow-parallax="x: 200,0,0">Facehack</h2>
+                    <h5 uk-slideshow-parallax="x: 400,0,0;">Share and find all the Webdev and UX/UI jobs with your Ironhack mates</h5>
+                </div>
             </div>
         </li>
         <li>
@@ -28,9 +35,6 @@
     <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
     <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slideshow-item="next"></a>
 
-</div>
-<div>
-    <h2>Share and find all the Webdev and UX/UI jobs with your Ironhack mates</h2> 
 </div>
 <h3>Jobs Available</h3>
 
