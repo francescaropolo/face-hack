@@ -13,13 +13,23 @@
             <div class="uk-grid-small uk-flex-middle" uk-grid>
                 <div class="uk-width-expand">
                     <h3 class="uk-card-title uk-margin-remove-bottom">{{title}}</h3>
-                    {{#ifEquals type "webdev"}}
+                    {{!-- {{#ifEquals type "webdev"}}
                         <i class="fas fa-code"></i>
                     {{/ifEquals}}
                     {{#ifEquals type "ux-ui"}}
                         <i class="fas fa-pencil-ruler"></i>
                     {{/ifEquals}}
-                    <p class="uk-text-meta uk-margin-remove-top"><time datetime="{{../jobTime}}">{{../jobTime}}</time></p>
+                    <p class="uk-text-meta uk-margin-remove-top"><time datetime="{{../jobTime}}">{{../jobTime}}</time></p> --}}
+                    <div class="uk-grid-small uk-flex-middle uk-flex-row uk-flex-center" uk-grid>
+                        <p class="uk-text-meta uk-margin-remove-top"><time datetime="{{../jobTime}}">{{../jobTime}}</time></p>
+                        <p class="uk-text-meta uk-margin-remove-top">
+                            {{#ifEquals type "webdev"}}
+                                <i class="fas fa-code"></i>
+                            {{/ifEquals}}
+                            {{#ifEquals type "ux-ui"}}
+                                <i class="fas fa-pencil-ruler"></i>
+                            {{/ifEquals}}</p>
+                    </div>
                 </div>
             </div>
         </div>

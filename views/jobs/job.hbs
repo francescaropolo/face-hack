@@ -12,15 +12,21 @@
             <div class="uk-grid-small uk-flex-middle" uk-grid>
                 <div class="uk-width-expand">
                     <h3 class="uk-card-title uk-margin-remove-bottom">{{job.title}}</h3>
-                    {{#ifEquals job.type "webdev"}}
+                    {{!-- {{#ifEquals job.type "webdev"}}
                         <i class="fas fa-code"></i>
                     {{/ifEquals}}
                     {{#ifEquals job.type "ux-ui"}}
                         <i class="fas fa-pencil-ruler"></i>
-                    {{/ifEquals}}
+                    {{/ifEquals}} --}}
                     <p class="uk-text-meta uk-margin-remove-top">{{job.company}}</p>
                     <div class="uk-grid-small uk-flex-middle uk-flex-between" uk-grid>
-                        <p class="uk-text-meta uk-margin-remove-top">{{job.type}}</p>
+                        <p class="uk-text-meta uk-margin-remove-top">
+                            {{#ifEquals job.type "webdev"}}
+                                <i class="fas fa-code"></i>
+                            {{/ifEquals}}
+                            {{#ifEquals job.type "ux-ui"}}
+                                <i class="fas fa-pencil-ruler"></i>
+                            {{/ifEquals}}</p>
                         <p class="uk-text-meta uk-margin-remove-top">{{job.journeyType}}</p>
                         <p class="uk-text-meta uk-margin-remove-top">Vacancies: {{job.vacancies}}</p>
                     </div>
