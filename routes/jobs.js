@@ -23,9 +23,7 @@ router.get('/', (req, res, next) => {
             const jobTime = moment(jobTime2).format('Do MMMM YYYY'); // Parsing using moment.js to new date format
             res.render('jobs/my-jobs', { jobs, data, jobTime });
         })
-        .catch(error => {
-            next(error);
-        });
+        .catch(next);
 });
 
 // GET rendering create view
@@ -85,7 +83,7 @@ router.post('/:id/apply', (req, res, next) => {
     const userId = req.session.currentUser._id;
     // Checking if user id exists
     Job.findById(id)
-        .then(job => {
+        .then(job => { // the owner can apply to his own job, whyyy??
             if (job && !job.applicants.some(applicantId => {
                 return applicantId.toString() === userId;
             })) {

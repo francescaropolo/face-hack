@@ -48,6 +48,8 @@ router.post('/signup', (req, res, next) => {
                         };
                         res.redirect('/');
                     })
+                    // why does he pass the error in the next??
+                    // not DRY
                     .catch(error => {
                         next(error);
                     });
@@ -75,13 +77,13 @@ router.post('/login', (req, res, next) => {
         };
         return res.redirect('/auth/login');
     }
-    User.findOne({email})
+    User.findOne({email}) // missed the auto-fill if something went wrong
         .then(user => {
             if (!user) {
                 req.session.sessionFlash = {
                     type: 'uk-alert-danger',
                     messageTitle: 'Error',
-                    message: 'User don\'t exist'
+                    message: 'User doesn\'t exist'
                 };
                 return res.redirect('/auth/login');
             }
