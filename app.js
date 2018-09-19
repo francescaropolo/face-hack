@@ -11,10 +11,12 @@ const mongoose = require('mongoose');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 const flash = require('express-flash');
-require('hbs');
+// require('hbs');
+
+const app = express();
 
 // Facehack requires
-require('./helpers/handlebars');
+// require('./helpers/handlebars');
 // const locals = require('./middlewares/locals');
 const authMiddlewares = require('./middlewares/auth');
 
@@ -25,8 +27,6 @@ const index = require('./routes/index');
 const users = require('./routes/users');
 const auth = require('./routes/auth');
 const jobs = require('./routes/jobs');
-
-const app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -51,6 +51,7 @@ app.use(flash());
 app.use((req, res, next) => {
     res.locals.sessionFlash = req.session.sessionFlash;
     delete req.session.sessionFlash;
+    app.locals.currentUser = req.session.currentUser;
     next();
 });
 
@@ -61,10 +62,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // app.use(locals.localCurrentUser);
-app.use((req, res, next) => {
-    app.locals.currentUser = req.session.currentUser;
-    next();
-});
 
 app.use('/', index);
 app.use('/users', authMiddlewares.requireUser, users);
